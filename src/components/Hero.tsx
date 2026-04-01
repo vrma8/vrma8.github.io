@@ -1,7 +1,7 @@
 import { Github, Linkedin, Mail, Terminal, Code2, Lock, Shield, Cpu } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion } from "motion/react";
 import profileIMG from "figma:asset/3f0e77e7260dabab7c129f611fcb946f6cca22e9.png";
 
@@ -14,7 +14,7 @@ function BruteForceText({ text, delay = 0 }: { text: string; delay?: number }) {
   useEffect(() => {
     // Start the reveal process
     const revealInterval = setInterval(() => {
-      setRevealedIndex(prev => {
+      setRevealedIndex((prev: number) => {
         if (prev >= text.length) {
           clearInterval(revealInterval);
           return prev;
@@ -73,17 +73,46 @@ function BruteForceText({ text, delay = 0 }: { text: string; delay?: number }) {
 export function Hero() {
   const [scrollY, setScrollY] = useState(0);
   const [mounted, setMounted] = useState(false);
+  const [windowSize, setWindowSize] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
     setMounted(true);
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+
     const handleScroll = () => {
       setScrollY(window.scrollY);
     };
 
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () =>
+    window.addEventListener("resize", handleResize);
+    return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  const codeSnippets = useMemo(() => 
+    ["sudo", "chmod", "nmap", "ssh", "root@", "apt", "systemctl", "mkdir", "touch", "rmdir", "rm -rf", "netstat"]
+      .map((text, i) => ({
+        text,
+        x: Math.random() * 100,
+        duration: 10 + Math.random() * 10,
+        delay: i * 2
+      })), []
+  );
+
+  const ambientParticles = useMemo(() => 
+    [...Array(20)].map(() => ({
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      duration: 2 + Math.random() * 2,
+      delay: Math.random() * 5
+    })), []
+  );
 
   // Calculate transform values based on scroll position
   const translateY = -scrollY * 0.5; // Parallax effect
@@ -107,27 +136,27 @@ export function Hero() {
 
       {/* Floating code snippets */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30 dark:opacity-40">
-        {[...Array(12)].map((_, i) => (
+        {mounted && codeSnippets.map((snippet, i) => (
           <motion.div
             key={i}
             className="absolute text-xs font-mono text-blue-500 dark:text-cyan-400"
             initial={{ 
-              x: Math.random() * window.innerWidth, 
-              y: -20,
+              left: `${snippet.x}%`, 
+              top: -20,
               opacity: 0 
             }}
             animate={{ 
-              y: window.innerHeight + 20,
+              top: windowSize.height + 20,
               opacity: [0, 0.8, 0]
             }}
             transition={{ 
-              duration: 10 + Math.random() * 10,
+              duration: snippet.duration,
               repeat: Infinity,
-              delay: i * 2,
+              delay: snippet.delay,
               ease: "linear"
             }}
           >
-            {["sudo", "chmod", "nmap", "ssh", "root@", "apt", "systemctl", "mkdir", "touch", "rmdir", "rm -rf", "netstat"][i]}
+            {snippet.text}
           </motion.div>
         ))}
       </div>
@@ -144,13 +173,13 @@ export function Hero() {
 
       {/* Particle system */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {mounted && ambientParticles.map((particle, i) => (
           <motion.div
             key={i}
             className="absolute w-1 h-1 bg-blue-400 dark:bg-cyan-400 rounded-full"
             initial={{ 
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
               scale: 0
             }}
             animate={{ 
@@ -158,9 +187,9 @@ export function Hero() {
               opacity: [0, 1, 0]
             }}
             transition={{ 
-              duration: 2 + Math.random() * 2,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 5
+              delay: particle.delay
             }}
           />
         ))}

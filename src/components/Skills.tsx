@@ -200,7 +200,7 @@ export function Skills() {
                           {/* ===== ANIMATED GLOWING PROGRESS BAR ===== */}
                           {/* This overlays the gray bar and animates from 0 to skill.level */}
                           <motion.div
-                            className="absolute top-0 left-0 h-2 bg-gradient-to-r from-blue-500 to-purple-500 dark:from-cyan-400 dark:to-green-400 rounded-full"
+                            className="absolute top-0 left-0 h-2 bg-gradient-to-r from-blue-500 to-purple-500 dark:from-cyan-400 dark:to-green-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)] dark:shadow-[0_0_10px_rgba(0,255,255,0.5)]"
                             initial={{ width: 0 }} // Starts at 0 width
                             whileInView={{ width: `${skill.level}%` }} // Fills to skill percentage
                             viewport={{ once: false }}
@@ -209,10 +209,6 @@ export function Skills() {
                               delay: 0.6 + catIndex * 0.15 + index * 0.08, // Same stagger as skill
                               ease: "easeOut" // Starts fast, ends slow
                             }}
-                            style={{ 
-                              boxShadow: '0 0 10px rgba(59, 130, 246, 0.5)' // Blue glow effect in light mode
-                            }}
-                            className="shadow-[0_0_10px_rgba(59,130,246,0.5)] dark:shadow-[0_0_10px_rgba(0,255,255,0.5)]"
                           />
                         </div>
                       </motion.div>
