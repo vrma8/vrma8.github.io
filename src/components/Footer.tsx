@@ -23,8 +23,7 @@ export function Footer() {
             </h3>
             <p className="text-cyan-300/60 text-sm font-mono leading-relaxed">
               <span className="text-green-400">&gt;&gt; </span>
-              Computer Science student passionate about building innovative solutions 
-              and learning new technologies.
+              ...
             </p>
           </motion.div>
 
@@ -77,7 +76,7 @@ export function Footer() {
             </h3>
             <div className="flex gap-4">
               <motion.a
-                href="https://github.com"
+                href="https://github.com/vrma8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg border border-cyan-500/30 bg-cyan-500/5 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all group"
@@ -87,7 +86,7 @@ export function Footer() {
                 <Github className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300" />
               </motion.a>
               <motion.a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/ravi-k-verma"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3 rounded-lg border border-cyan-500/30 bg-cyan-500/5 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all group"
@@ -97,7 +96,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300" />
               </motion.a>
               <motion.a
-                href="mailto:jordan@example.com"
+                href="mailto:[EMAIL_ADDRESS]"
                 className="p-3 rounded-lg border border-cyan-500/30 bg-cyan-500/5 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all group"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}

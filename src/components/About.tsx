@@ -14,17 +14,16 @@ export function About() {
   // ===== CONTENT DATA =====
   // TO EDIT YOUR EDUCATION: Modify the array below
   const educationDetails = [
-    "B.Tech Computer Science & Engineering, Expected 2028",
+    "B.Tech Computer Science & Engineering - National Institute of Technology Hamirpur, 2024-2028",
     "Senior Secondary Education - 2023",
-    "Matriculation - 2021",
-    "Relevant Coursework: Data Structures, Algorithms, Web Development"
+    "Matriculation - 2021"
   ];
 
   // TO EDIT YOUR EXPERIENCE: Modify the array below
   const experienceDetails = [
     "Executive at Robotics Society NITH - present",
-    "Volunteer at Robotics Society NITH - ",
-    "Volunteer at E Cell NITH - ",
+    "Volunteer at Robotics Society NITH",
+    "Volunteer at Entrepreneurship Cell NITH"
   ];
 
   // TO EDIT YOUR ACHIEVEMENTS: Modify the array below
@@ -119,9 +118,9 @@ export function About() {
             >
               <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
                 <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
-                I'm a junior at State University majoring in Computer Science with a minor in Mathematics. 
-                My journey in tech started when I built my first website in high school, and I've been 
-                hooked ever since.
+                I am Second year undergraduate student at National Institute of Technology Hamirpur, 
+                pursuing Bachelor of Technology in Computer Science and Engineering. 
+                
               </p>
             </motion.div>
             
@@ -136,10 +135,9 @@ export function About() {
             >
               <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
                 <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
-                I'm particularly interested in <span className="text-blue-600 dark:text-cyan-400 font-semibold">full-stack development</span> and{" "}
-                <span className="text-blue-600 dark:text-cyan-400 font-semibold">artificial intelligence</span>. 
-                When I'm not coding, you can find me contributing to open-source projects, participating 
-                in hackathons, or mentoring fellow students in our coding club.
+                I'm particularly interested in <span className="text-blue-600 dark:text-cyan-400 font-semibold">full-stack Web Development</span> and{" "}
+                <span className="text-blue-600 dark:text-cyan-400 font-semibold">Cyber Security</span>. 
+                I am always eager to learn new technologies and improve my existing skillset.
               </p>
             </motion.div>
             
@@ -154,7 +152,7 @@ export function About() {
             >
               <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
                 <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
-                My goal is to create innovative solutions that make a positive impact on people's lives. 
+                My goal is to create innovative and scalable solutions that make a difference in the world. 
                 I believe in <span className="text-blue-600 dark:text-cyan-400 font-semibold">continuous learning</span> and staying up-to-date with the latest technologies 
                 and best practices in software development.
               </p>

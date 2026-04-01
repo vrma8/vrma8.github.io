@@ -280,7 +280,7 @@ export function Hero() {
           transition={{ delay: 0.3 }}
           className="mb-4 font-mono text-blue-600 dark:text-cyan-400"
         >
-          <span className="text-purple-600 dark:text-green-400">root@portfolio:~$</span> whoami
+          <span className="text-purple-600 dark:text-green-400">root@vrma8:~$</span> whoami
         </motion.div>
 
         {/* Name with Brute Force Animation */}
@@ -361,7 +361,7 @@ export function Hero() {
           transition={{ delay: 3.3 }}
         >
           <motion.a
-            href="https://github.com/ravi56432"
+            href="https://github.com/vrma8"
             target="_blank"
             rel="noopener noreferrer"
             className="p-3 rounded-lg border border-blue-500/30 dark:border-cyan-500/30 hover:border-blue-400 dark:hover:border-cyan-400 bg-blue-500/5 dark:bg-cyan-500/5 hover:bg-blue-500/10 dark:hover:bg-cyan-500/20 transition-all group"
@@ -381,7 +381,7 @@ export function Hero() {
             <Linkedin className="w-6 h-6 text-gray-700 dark:text-cyan-300 group-hover:text-blue-600 dark:group-hover:text-cyan-100" />
           </motion.a>
           <motion.a
-            href="mailto:jordan@example.com"
+            href="mailto:[EMAIL_ADDRESS]"
             className="p-3 rounded-lg border border-blue-500/30 dark:border-cyan-500/30 hover:border-blue-400 dark:hover:border-cyan-400 bg-blue-500/5 dark:bg-cyan-500/5 hover:bg-blue-500/10 dark:hover:bg-cyan-500/20 transition-all group"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
