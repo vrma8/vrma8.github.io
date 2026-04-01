@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { useState, useEffect, useMemo } from "react";
 import { motion } from "motion/react";
-import profileIMG from "figma:asset/3f0e77e7260dabab7c129f611fcb946f6cca22e9.png";
+import profileIMG from "../assets/ravi.jpg";
 
 // Brute force text animation component
 function BruteForceText({ text, delay = 0 }: { text: string; delay?: number }) {
