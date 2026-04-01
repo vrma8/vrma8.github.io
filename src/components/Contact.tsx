@@ -1,4 +1,6 @@
+import React from 'react';
 import { Mail, MapPin, Phone, Send, CheckCircle2, Loader2, Terminal } from 'lucide-react';
+import { toast } from 'sonner';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -16,17 +18,47 @@ export function Contact() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    const formData = new FormData(e.currentTarget);
+    // Add your Web3Forms Access Key here (Get it free at https://web3forms.com)
+    formData.append("access_key", "05accb4d-e322-480c-acd4-66e6b49edd64");
+    formData.append("from_name", "Portfolio Contact Form");
     
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    const data = Object.fromEntries(formData.entries());
     
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      (e.target as HTMLFormElement).reset();
-    }, 3000);
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setIsSubmitted(true);
+        toast.success('Secure transmission complete. I will get back to you soon!', {
+          className: 'font-mono text-xs',
+        });
+        
+        // Reset form after delay
+        setTimeout(() => {
+          setIsSubmitted(false);
+          (e.target as HTMLFormElement).reset();
+        }, 5000);
+      } else {
+        throw new Error(result.message || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      toast.error('Transmission failed. Direct link available in header.', {
+        className: 'font-mono text-xs',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -200,6 +232,7 @@ export function Contact() {
                       </Label>
                       <Input 
                         id="name" 
+                        name="name"
                         type="text" 
                         placeholder="root@user" 
                         required 
@@ -213,6 +246,7 @@ export function Contact() {
                       </Label>
                       <Input 
                         id="email" 
+                        name="email"
                         type="email" 
                         placeholder="user@domain.com" 
                         required 
@@ -226,6 +260,7 @@ export function Contact() {
                       </Label>
                       <Input 
                         id="subject" 
+                        name="subject"
                         type="text" 
                         placeholder="[TOPIC]" 
                         className="transition-all focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-500 bg-white dark:bg-black/50 border-gray-300 dark:border-cyan-500/30 text-gray-700 dark:text-cyan-300 placeholder:text-gray-400 dark:placeholder:text-cyan-300/30 font-mono focus:border-blue-400 dark:focus:border-cyan-400"
@@ -238,6 +273,7 @@ export function Contact() {
                       </Label>
                       <Textarea
                         id="message"
+                        name="message"
                         placeholder="# Enter your message here..."
                         rows={5}
                         required
