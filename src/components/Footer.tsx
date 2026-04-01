@@ -1,7 +1,53 @@
-import { Github, Linkedin, Mail, Heart, Terminal } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Github, Linkedin, Mail, Heart, Terminal, Eye, Users } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function Footer() {
+  const [views, setViews] = useState<number | null>(null);
+
+  useEffect(() => {
+    const fetchViews = async (isFirstVisit: boolean) => {
+      try {
+        const endpoint = isFirstVisit 
+          ? 'https://api.counterapi.dev/v1/vrma8.github.io/hits/up'
+          : 'https://api.counterapi.dev/v1/vrma8.github.io/hits';
+        
+        const response = await fetch(endpoint);
+        const data = await response.json();
+        if (data && typeof data.count === 'number') {
+          setViews(data.count);
+        }
+      } catch (error) {
+        console.error('Error tracking views:', error);
+      }
+    };
+
+    // Check if we've already counted this session's visit
+    const hasVisited = sessionStorage.getItem('vrma8_portfolio_viewed');
+    
+    if (!hasVisited) {
+      fetchViews(true);
+      sessionStorage.setItem('vrma8_portfolio_viewed', 'true');
+    } else {
+      fetchViews(false);
+    }
+    
+    // Refresh count every 60 seconds for "real-time" feel without incrementing
+    const interval = setInterval(async () => {
+      try {
+        const response = await fetch('https://api.counterapi.dev/v1/vrma8.github.io/hits');
+        const data = await response.json();
+        if (data && typeof data.count === 'number') {
+          setViews(data.count);
+        }
+      } catch (error) {
+        console.error('Error fetching views:', error);
+      }
+    }, 60000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <footer className="bg-black text-white py-12 px-4 relative overflow-hidden border-t border-cyan-500/30">
       {/* Background effects */}
@@ -131,6 +177,36 @@ export function Footer() {
             <span className="text-green-400">// </span>
             System online • All rights reserved © 2025
           </p>
+
+          <motion.div 
+            className="mt-6 flex flex-wrap items-center justify-center gap-6 text-[10px] uppercase tracking-[0.2em] font-mono text-cyan-500/40"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/10 bg-cyan-500/5">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Users className="w-3 h-3" />
+                Live Status: <span className="text-cyan-300">Active</span>
+              </span>
+            </div>
+
+            <div className="h-4 w-px bg-cyan-500/20 hidden sm:block" />
+
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-500/10 bg-cyan-500/5">
+              <Eye className="w-3 h-3 text-cyan-400" />
+              <span>Total Views:</span>
+              <span className="text-cyan-300 text-sm font-bold min-w-[3ch]">
+                {views !== null ? views.toLocaleString() : (
+                  <span className="animate-pulse">...</span>
+                )}
+              </span>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </footer>
