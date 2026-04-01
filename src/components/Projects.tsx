@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Lock } from 'lucide-react';
+import { ExternalLink, Github, Cpu } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
@@ -18,8 +18,8 @@ const projects = [
     description: 'Operating system from scratch having built-in AI agent mode to perform tasks on behalf of user at Kernel Level.', // PROJECT DESCRIPTION
     image: 'https://www.techspot.com/images2/news/bigimage/2025/11/2025-11-18-image-24.jpg', // PROJECT IMAGE URL
     technologies: ['C', 'Assembly'], // TECH STACK (add/remove as needed)
-    github: 'https://github.com/DAEDGOAT17/os_dev.git', // GITHUB REPO LINK
-    demo: '<get .iso image from github>', // LIVE DEMO LINK
+    github: 'https://github.com/DAEDGOAT17/os_dev', // GITHUB REPO LINK
+    demo: 'https://github.com/DAEDGOAT17/os_dev', // LIVE DEMO LINK (Points to repo as it's an OS)
   },
   
 ];
@@ -93,7 +93,7 @@ export function Projects() {
             >
               <Card className="flex flex-col overflow-hidden bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 hover:border-blue-400 dark:hover:border-cyan-400 transition-all backdrop-blur-sm group relative shadow-sm">
                 {/* Glowing overlay - appears on hover (using Tailwind 'group' feature) */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-blue-500/0 dark:from-cyan-500/0 dark:via-green-500/0 dark:to-cyan-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 dark:group-hover:from-cyan-500/10 dark:group-hover:via-green-500/5 dark:group-hover:to-cyan-500/10 transition-all duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-blue-500/0 dark:from-cyan-500/0 dark:via-green-500/0 dark:to-cyan-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 dark:group-hover:from-cyan-500/10 dark:group-hover:via-green-500/5 dark:group-hover:to-cyan-500/10 transition-all duration-500 pointer-events-none" />
                 
                 {/* ===== PROJECT IMAGE ===== */}
                 <div className="relative overflow-hidden">
@@ -107,8 +107,8 @@ export function Projects() {
                   />
                   {/* Dark gradient overlay for better text readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-                  {/* Lock icon appears on hover (cybersecurity theme) */}
-                  <Lock className="absolute top-4 right-4 w-6 h-6 text-blue-400 dark:text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  {/* OS icon appears on hover (cybersecurity/technical theme) */}
+                  <Cpu className="absolute top-4 right-4 w-6 h-6 text-blue-400 dark:text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                 </div>
 
                 {/* ===== PROJECT INFO ===== */}
