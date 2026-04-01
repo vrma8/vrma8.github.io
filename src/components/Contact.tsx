@@ -134,7 +134,7 @@ export function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-purple-600 dark:text-green-400 font-mono">Phone</p>
-                      <p className="text-gray-700 dark:text-cyan-300 font-mono text-sm">+91 7869799673</p>
+                      <p className="text-gray-700 dark:text-cyan-300 font-mono text-sm">+91 ******9673</p>
                     </div>
                   </CardContent>
                 </Card>
