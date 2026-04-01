@@ -97,3 +97,7 @@ storybook-static/
 # cache
 
 .cache/
+
+# few text files
+
+*.txt
