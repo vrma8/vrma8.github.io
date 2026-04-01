@@ -14,31 +14,14 @@ TO REMOVE A PROJECT: Delete the entire object from the array
 const projects = [
   {
     id: 1, // Unique ID for each project (use sequential numbers)
-    title: 'E-Commerce Platform', // PROJECT NAME
-    description: 'A full-stack online shopping platform with user authentication, product management, and payment integration.', // PROJECT DESCRIPTION
-    image: 'https://images.unsplash.com/photo-1627634771121-fa3db5779f60?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzY2MDAwMTEzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral', // PROJECT IMAGE URL
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'], // TECH STACK (add/remove as needed)
-    github: 'https://github.com', // GITHUB REPO LINK
-    demo: 'https://example.com', // LIVE DEMO LINK
+    title: 'Agentic OS', // PROJECT NAME
+    description: 'Operating system from scratch having built-in AI agent mode to perform tasks on behalf of user at Kernel Level.', // PROJECT DESCRIPTION
+    image: 'https://www.techspot.com/images2/news/bigimage/2025/11/2025-11-18-image-24.jpg', // PROJECT IMAGE URL
+    technologies: ['C', 'Assembly'], // TECH STACK (add/remove as needed)
+    github: 'https://github.com/DAEDGOAT17/os_dev.git', // GITHUB REPO LINK
+    demo: '<get .iso image from github>', // LIVE DEMO LINK
   },
-  {
-    id: 2,
-    title: 'Task Management App',
-    description: 'A mobile-responsive task management application with real-time collaboration features and intuitive UI.',
-    image: 'https://images.unsplash.com/photo-1609921212029-bb5a28e60960?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2JpbGUlMjBhcHAlMjBkZXNpZ258ZW58MXx8fHwxNzY1OTYxOTAzfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    technologies: ['TypeScript', 'Firebase', 'Tailwind CSS'],
-    github: 'https://github.com',
-    demo: 'https://example.com',
-  },
-  {
-    id: 3,
-    title: 'Analytics Dashboard',
-    description: 'An interactive data visualization dashboard for analyzing business metrics and generating insights.',
-    image: 'https://images.unsplash.com/photo-1759661966728-4a02e3c6ed91?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXRhJTIwdmlzdWFsaXphdGlvbiUyMGRhc2hib2FyZHxlbnwxfHx8fDE3NjYwMDUzMjh8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral',
-    technologies: ['React', 'D3.js', 'Python', 'Flask'],
-    github: 'https://github.com',
-    demo: 'https://example.com',
-  },
+  
 ];
 
 export function Projects() {
@@ -84,7 +67,7 @@ export function Projects() {
           {/* TO EDIT SUBTITLE: Change text below */}
           <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 max-w-2xl mx-auto font-mono text-sm">
             <span className="text-purple-600 dark:text-green-400"># </span>
-            Showcasing my arsenal of web applications and cybersecurity projects
+            Showcasing my work
           </p>
         </motion.div>
 
