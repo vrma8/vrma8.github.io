@@ -1,0 +1,55 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+dist-ssr/
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# IDE / Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# TypeScript / Build tool cache
+*.tsbuildinfo
+.vite
+.cache/
+
+# Testing
+coverage/
+
+# Storybook
+storybook-static/
+
+# Secrets, Private Keys & Credentials
+*secret*
+*credentials*
+*.key
+*.pem
+*.cert
+*.p12
+
+# Local build / cache configs
+.eslintcache
+.stylelintcache
+.npm
