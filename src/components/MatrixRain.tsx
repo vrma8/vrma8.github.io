@@ -26,10 +26,10 @@ export function MatrixRain() {
       if (!ctx || !canvas) return;
       
       // Dark mode fade trail
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.20)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#00ff41';
+      ctx.fillStyle = 'rgba(0, 255, 55, 0.1)';
       ctx.font = fontSize + 'px monospace';
 
       for (let i = 0; i < drops.length; i++) {

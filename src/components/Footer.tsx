@@ -5,49 +5,6 @@ import { motion } from 'framer-motion';
 export function Footer() {
   const [views, setViews] = useState<number | null>(null);
 
-  useEffect(() => {
-    const fetchViews = async (isFirstVisit: boolean) => {
-      try {
-        const endpoint = isFirstVisit 
-          ? 'https://api.counterapi.dev/v1/vrma8.github.io/hits/up'
-          : 'https://api.counterapi.dev/v1/vrma8.github.io/hits';
-        
-        const response = await fetch(endpoint);
-        const data = await response.json();
-        if (data && typeof data.count === 'number') {
-          setViews(data.count);
-        }
-      } catch (error) {
-        console.error('Error tracking views:', error);
-      }
-    };
-
-    // Check if we've already counted this session's visit
-    const hasVisited = sessionStorage.getItem('vrma8_portfolio_viewed');
-    
-    if (!hasVisited) {
-      fetchViews(true);
-      sessionStorage.setItem('vrma8_portfolio_viewed', 'true');
-    } else {
-      fetchViews(false);
-    }
-    
-    // Refresh count every 60 seconds for "real-time" feel without incrementing
-    const interval = setInterval(async () => {
-      try {
-        const response = await fetch('https://api.counterapi.dev/v1/vrma8.github.io/hits');
-        const data = await response.json();
-        if (data && typeof data.count === 'number') {
-          setViews(data.count);
-        }
-      } catch (error) {
-        console.error('Error fetching views:', error);
-      }
-    }, 60000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <motion.footer className="bg-black text-white py-12 px-4 relative overflow-hidden border-t border-cyan-500/30" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: false, margin: "-100px" }} transition={{ duration: 0.8 }}>
       {/* Background effects */}
@@ -106,7 +63,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5 text-cyan-400 group-hover:text-cyan-300" />
               </motion.a>
               <motion.a
-                href="mailto:[EMAIL_ADDRESS]"
+                href="mailto:24bcs096@nith.ac.in"
                 className="p-3 rounded-lg border border-cyan-500/30 bg-cyan-500/5 hover:bg-cyan-500/20 hover:border-cyan-400 transition-all group"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 whileTap={{ scale: 0.95 }}

@@ -21,7 +21,7 @@ export function About() {
 
   // TO EDIT YOUR EXPERIENCE: Modify the array below
   const experienceDetails = [
-    "Executive at Robotics Society NITH - present",
+    "Executive at Robotics Society NITH",
     "Volunteer at Robotics Society NITH",
     "Volunteer at Entrepreneurship Cell NITH"
   ];
@@ -84,8 +84,7 @@ export function About() {
           </h2>
           {/* TO EDIT SUBTITLE: Change text below */}
           <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 font-mono text-sm">
-            <span className="text-purple-600 dark:text-green-400">// </span>
-            "$ Who am I?"
+            <span className="text-purple-600 dark:text-green-400"></span>
           </p>
         </motion.div>
 
@@ -112,7 +111,7 @@ export function About() {
             >
               <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
                 <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
-                I am Second year undergraduate student at National Institute of Technology Hamirpur, 
+                Pre Final Year undergraduate student at National Institute of Technology, Hamirpur, 
                 pursuing Bachelor of Technology in Computer Science and Engineering. 
                 
               </p>
@@ -129,7 +128,7 @@ export function About() {
             >
               <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
                 <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
-                I'm particularly interested in <span className="text-blue-600 dark:text-cyan-400 font-semibold">full-stack Web Development</span> and{" "}
+                I am interested in <span className="text-blue-600 dark:text-cyan-400 font-semibold">full-stack Web Development</span> and{" "}
                 <span className="text-blue-600 dark:text-cyan-400 font-semibold">Cyber Security</span>. 
                 I am always eager to learn new technologies and improve my existing skillset.
               </p>
@@ -147,8 +146,7 @@ export function About() {
               <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
                 <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
                 My goal is to create innovative and scalable solutions that make a difference in the world. 
-                I believe in <span className="text-blue-600 dark:text-cyan-400 font-semibold">continuous learning</span> and staying up-to-date with the latest technologies 
-                and best practices in software development.
+                I believe in <span className="text-blue-600 dark:text-cyan-400 font-semibold">continuous learning</span> and always improving myself on best practices in software development.
               </p>
             </motion.div>
           </motion.div>
