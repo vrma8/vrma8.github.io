@@ -85,7 +85,7 @@ export function About() {
           {/* TO EDIT SUBTITLE: Change text below */}
           <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 font-mono text-sm">
             <span className="text-purple-600 dark:text-green-400">// </span>
-            System.out.println("Who am I?");
+            "$ Who am I?"
           </p>
         </motion.div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, MapPin, Phone, Send, CheckCircle2, Loader2, Terminal } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, CheckCircle2, Loader2, Terminal, Instagram } from 'lucide-react';
 import { toast } from 'sonner';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
@@ -152,14 +152,25 @@ export function Contact() {
                 whileHover={{ scale: 1.02 }}
                 style={{ originX: 0 }}
               >
-                <Card className="bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 hover:border-purple-500 dark:hover:border-green-400 transition-all backdrop-blur-sm group shadow-sm">
+              </motion.div>
+
+              <motion.div
+                className="space-y-4"
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+                whileHover={{ scale: 1.02 }}
+                style={{ originX: 0 }}
+              >
+                <Card className="bg-white/80 dark:bg-gray-900/50 border-purple-300 dark:border-green-500/30 hover:border-purple-500 dark:hover:border-green-400 transition-all backdrop-blur-sm group shadow-sm">
                   <CardContent className="flex items-center gap-4 p-4">
                     <div className="p-3 rounded-lg bg-purple-500/10 dark:bg-green-500/20 border border-purple-300 dark:border-green-500/30 group-hover:bg-purple-500/20 dark:group-hover:bg-green-500/30 transition-all">
-                      <Phone className="w-6 h-6 text-purple-600 dark:text-green-400" />
+                      <Instagram className="w-6 h-6 text-purple-600 dark:text-green-400" />
                     </div>
                     <div>
-                      <p className="text-sm text-purple-600 dark:text-green-400 font-mono">Phone</p>
-                      <p className="text-gray-700 dark:text-cyan-300 font-mono text-sm">+91 ******9673</p>
+                      <p className="text-sm text-purple-600 dark:text-green-400 font-mono">Instagram</p>
+                      <p className="text-gray-700 dark:text-cyan-300 font-mono text-sm">@vrma_nyt</p>
                     </div>
                   </CardContent>
                 </Card>
