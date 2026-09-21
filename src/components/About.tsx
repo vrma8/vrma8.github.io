@@ -21,6 +21,7 @@ export function About() {
 
   // TO EDIT YOUR EXPERIENCE: Modify the array below
   const experienceDetails = [
+    "Domain Lead at SHIELD NITH",
     "Executive at Robotics Society NITH",
     "Volunteer at Robotics Society NITH",
     "Volunteer at Entrepreneurship Cell NITH"
@@ -28,7 +29,8 @@ export function About() {
 
   // TO EDIT YOUR ACHIEVEMENTS: Modify the array below
   const achievementDetails = [
-    "Top 3% Globally- TryHackMe"
+    "Top 3% Globally- TryHackMe",
+    "Grand Finalist of National Level Conversational AI Hackathon",
   ];
 
   return (

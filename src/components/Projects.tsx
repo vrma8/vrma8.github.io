@@ -17,7 +17,15 @@ const projects = [
     github: 'https://github.com/vrma8/AOS', // GITHUB REPO LINK
     demo: 'https://github.com/vrma8/AOS', // LIVE DEMO LINK (Points to repo as it's an OS)
   },
-  
+  {
+    id: 2, // Unique ID for each project (use sequential numbers)
+    title: 'NexaVoice', // PROJECT NAME
+    description: 'NexaVoice is an intelligent support platform built on Agora Conversational AI that enables natural voice and text interactions. It is engineered for realistic, high-stress environments where callers may be speaking in multiple languages (English, Hindi, Hinglish), interrupting the agent, or communicating from noisy locations.', // PROJECT DESCRIPTION
+    image: 'https://res.cloudinary.com/dq6oy0ije/image/upload/v1790010911/android-chrome-192x192_srs9cr.png', // PROJECT IMAGE URL
+    technologies: ['Agora Conversational AI', 'TypeScript', 'PostgreSQL', 'Vercel', 'WebRTC', 'RESTAPI', 'Prisma', 'Next.js'], // TECH STACK (add/remove as needed)
+    github: 'https://github.com/vrma8/nexavoice', // GITHUB REPO LINK
+    demo: 'https://nexavoice-v1.vercel.app', // LIVE DEMO LINK ()
+  },  
 ];
 
 export function Projects() {
