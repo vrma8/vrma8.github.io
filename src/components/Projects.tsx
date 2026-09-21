@@ -30,7 +30,7 @@ const projects = [
   },  
 ];
 
-type Project = typeof projects[number];
+type Project = (typeof projects)[number];
 
 // ===== PROJECT CARD COMPONENT =====
 // Renders a single project card with a collapsible description.
