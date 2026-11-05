@@ -49,8 +49,8 @@ export function BinaryRain() {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       // Set text color based on theme
-      // Dark mode: Kali Linux green, Light mode: darker blue-green
-      ctx.fillStyle = theme === 'dark' ? '#00ff41' : '#3b82f6';
+      // Monochrome: subtle white in dark mode, subtle black in light mode
+      ctx.fillStyle = theme === 'dark' ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.25)';
       ctx.font = fontSize + 'px monospace';
 
       // Draw each column

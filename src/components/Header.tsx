@@ -22,7 +22,7 @@ export function Header() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-black/90 backdrop-blur-md z-50 border-b border-gray-300 dark:border-cyan-500/30 shadow-lg shadow-gray-300/10 dark:shadow-cyan-500/10"
+      className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-black/90 backdrop-blur-md z-50 border-b border-neutral-200 dark:border-neutral-800 shadow-sm"
     >
       <nav className="max-w-6xl mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
@@ -33,11 +33,11 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Terminal className="w-6 h-6 text-blue-600 dark:text-cyan-400" />
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 dark:from-cyan-400 dark:to-green-400 bg-clip-text text-transparent font-bold">
+            <Terminal className="w-6 h-6 text-black dark:text-white" />
+            <span className="text-black dark:text-white font-bold tracking-tight">
               root@ravi
             </span>
-            <span className="text-blue-600 dark:text-cyan-400">:~$</span>
+            <span className="text-neutral-500 dark:text-neutral-400">:~$</span>
           </motion.a>
           
           {/* ===== DESKTOP NAVIGATION ===== */}
@@ -53,12 +53,12 @@ export function Header() {
                 >
                   <motion.a
                     href={item.href}
-                    className="text-gray-700 dark:text-cyan-300 hover:text-blue-600 dark:hover:text-green-400 transition-colors font-mono relative group"
-                    whileHover={{ scale: 1.1 }}
+                    className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors font-mono relative group"
+                    whileHover={{ scale: 1.05 }}
                   >
                     <span className="relative z-10">{item.label}</span>
                     <motion.span 
-                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-cyan-400 dark:to-green-400 group-hover:w-full transition-all duration-300"
+                      className="absolute -bottom-1 left-0 w-0 h-0.5 bg-black dark:bg-white group-hover:w-full transition-all duration-300"
                     />
                   </motion.a>
                 </motion.li>
@@ -73,7 +73,7 @@ export function Header() {
             <Button
               variant="ghost"
               size="icon"
-              className="text-gray-700 dark:text-cyan-300 hover:text-blue-600 dark:hover:text-green-400 hover:bg-blue-100 dark:hover:bg-cyan-500/10"
+              className="text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -98,10 +98,10 @@ export function Header() {
               >
                 <a
                   href={item.href}
-                  className="block text-gray-700 dark:text-cyan-300 hover:text-blue-600 dark:hover:text-green-400 transition-colors font-mono hover:pl-2 transition-all"
+                  className="block text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-all font-mono hover:pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span className="text-purple-600 dark:text-green-400">&gt;</span> {item.label}
+                  <span className="text-neutral-500 dark:text-neutral-400">&gt;</span> {item.label}
                 </a>
               </motion.li>
             ))}

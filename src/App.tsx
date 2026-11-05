@@ -12,7 +12,7 @@ import { ThemeProvider } from './components/ThemeProvider';
 export default function App() {
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-black relative overflow-hidden">
+      <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white relative overflow-hidden">
         <MatrixRain />
         <div className="relative z-10">
           <Header />

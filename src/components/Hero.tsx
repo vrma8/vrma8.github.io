@@ -65,7 +65,7 @@ function BruteForceText({ text, delay = 0 }: { text: string; delay?: number }) {
     <span className="inline-block min-h-[1em]">
       {displayText || text.split("").map(() => " ").join("")}
       {revealedIndex < text.length && (
-        <span className="inline-block w-0.5 h-[1em] bg-green-400 ml-1 animate-pulse" />
+        <span className="inline-block w-0.5 h-[1em] bg-black dark:bg-white ml-1 animate-pulse" />
       )}
     </span>
   );
@@ -117,9 +117,9 @@ export function Hero() {
 
       {/* Radial gradient overlays */}
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 dark:bg-cyan-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 dark:bg-green-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-neutral-400/5 dark:bg-white/5 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neutral-400/5 dark:bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 w-96 h-96 bg-neutral-400/5 dark:bg-white/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
       </div>
       
 
@@ -128,7 +128,7 @@ export function Hero() {
         {mounted && ambientParticles.map((particle, i) => (
           <motion.div
             key={i}
-            className="absolute w-1 h-1 bg-blue-400 dark:bg-cyan-400 rounded-full"
+            className="absolute w-1 h-1 bg-neutral-400 dark:bg-neutral-300 rounded-full"
             initial={{ 
               left: `${particle.x}%`,
               top: `${particle.y}%`,
@@ -162,28 +162,28 @@ export function Hero() {
           <div className="relative w-60 h-60 mx-auto mb-8 group">
             {/* Multiple animated border rings */}
             <motion.div 
-              className="absolute inset-0 rounded-full border-2 border-blue-500/30 dark:border-cyan-500/50"
+              className="absolute inset-0 rounded-full border-2 border-neutral-300 dark:border-neutral-700"
               animate={{ rotate: 360 }}
               transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
             >
-              <div className="absolute top-0 left-1/2 w-2 h-2 bg-blue-400 dark:bg-cyan-400 rounded-full -translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute top-0 left-1/2 w-2 h-2 bg-black dark:bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
             </motion.div>
             <motion.div 
-              className="absolute inset-2 rounded-full border-2 border-purple-500/20 dark:border-green-500/30"
+              className="absolute inset-2 rounded-full border-2 border-neutral-200 dark:border-neutral-800"
               animate={{ rotate: -360 }}
               transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
             >
-              <div className="absolute top-1/2 right-0 w-2 h-2 bg-purple-400 dark:bg-green-400 rounded-full translate-x-1/2 -translate-y-1/2" />
+              <div className="absolute top-1/2 right-0 w-2 h-2 bg-neutral-500 dark:bg-neutral-400 rounded-full translate-x-1/2 -translate-y-1/2" />
             </motion.div>
             <motion.div 
-              className="absolute inset-4 rounded-full border border-blue-500/10 dark:border-cyan-500/20"
+              className="absolute inset-4 rounded-full border border-neutral-200 dark:border-neutral-800"
               animate={{ rotate: 360 }}
               transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
             />
             
             {/* Pulsing glow effect */}
             <motion.div 
-              className="absolute inset-6 rounded-full bg-blue-500/10 dark:bg-cyan-500/20 blur-xl"
+              className="absolute inset-6 rounded-full bg-neutral-200/50 dark:bg-white/5 blur-xl"
               animate={{ 
                 scale: [1, 1.2, 1],
                 opacity: [0.3, 0.6, 0.3]
@@ -192,7 +192,7 @@ export function Hero() {
             />
             
             {/* Profile image */}
-            <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-white dark:border-black shadow-lg shadow-blue-500/30 dark:shadow-cyan-500/50 group-hover:shadow-blue-500/50 dark:group-hover:shadow-cyan-500/80 transition-all">
+            <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-white dark:border-neutral-900 shadow-xl shadow-black/10 dark:shadow-white/5 group-hover:border-neutral-400 dark:group-hover:border-neutral-700 transition-all">
               <img 
                 src={profileIMG}
                 alt="Profile"
@@ -207,37 +207,35 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="mb-4 font-mono text-blue-600 dark:text-cyan-400"
+          className="mb-4 font-mono text-neutral-600 dark:text-neutral-400"
         >
-          <span className="text-purple-600 dark:text-green-400">root@vrma8:~$</span> whoami
+          <span className="text-neutral-500 dark:text-neutral-500">root@vrma8:~$</span> <span className="text-black dark:text-white">whoami</span>
         </motion.div>
 
         {/* Name with Brute Force Animation */}
         <motion.h1 
-          className="mb-4 text-4xl md:text-6xl font-bold font-mono"
+          className="mb-4 text-4xl md:text-6xl font-bold font-mono tracking-tight text-black dark:text-white"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-cyan-400 dark:via-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
-            {mounted && <BruteForceText text="Ravi Kumar Verma" delay={500} />}
-          </span>
+          {mounted && <BruteForceText text="Ravi Kumar Verma" delay={500} />}
         </motion.h1>
 
         {/* Title */}
         <motion.p 
-          className="text-xl text-gray-700 dark:text-cyan-300 mb-4 font-mono"
+          className="text-xl text-neutral-700 dark:text-neutral-300 mb-4 font-mono"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5 }}
         >
-          <Code2 className="inline w-5 h-5 mr-2" />
+          <Code2 className="inline w-5 h-5 mr-2 text-neutral-500 dark:text-neutral-400" />
           B. Tech Computer Science & Engineering Student
         </motion.p>
 
         {/* Institution */}
         <motion.p 
-          className="text-purple-600 dark:text-green-400 mb-8 font-mono text-sm"
+          className="text-neutral-600 dark:text-neutral-400 mb-8 font-mono text-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.7 }}
@@ -247,15 +245,15 @@ export function Hero() {
 
         {/* Description */}
         <motion.p 
-          className="text-lg text-gray-600 dark:text-cyan-300/80 mb-10 max-w-2xl mx-auto font-mono leading-relaxed"
+          className="text-lg text-neutral-600 dark:text-neutral-300/80 mb-10 max-w-2xl mx-auto font-mono leading-relaxed"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.9 }}
         >
-          <span className="text-purple-600 dark:text-green-400">{">>"} </span>
+          <span className="text-neutral-400 dark:text-neutral-500">{">>"} </span>
           Passionate about creating innovative solutions through code. 
-          Specializing in <span className="text-blue-600 dark:text-cyan-400 font-semibold">web development</span> and{" "}
-          <span className="text-blue-600 dark:text-cyan-400 font-semibold">cybersecurity</span>.
+          Specializing in <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">web development</span> and{" "}
+          <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">cybersecurity</span>.
         </motion.p>
 
         {/* Buttons */}
@@ -267,18 +265,24 @@ export function Hero() {
         >
           <Button
             size="lg"
-            className="gap-2 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-cyan-600 dark:to-green-600 hover:from-blue-500 hover:to-purple-500 dark:hover:from-cyan-500 dark:hover:to-green-500 text-white font-mono shadow-lg shadow-blue-500/30 dark:shadow-cyan-500/30 hover:shadow-blue-500/50 dark:hover:shadow-cyan-500/50 border border-blue-400/50 dark:border-cyan-400/50"
+            className="gap-2 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 border border-black dark:border-white font-mono shadow-md transition-all"
+            asChild
           >
-            <Mail className="w-4 h-4" />
-            Get in Touch
+            <a href="#contact">
+              <Mail className="w-4 h-4" />
+              Get in Touch
+            </a>
           </Button>
           <Button
             size="lg"
             variant="outline"
-            className="gap-2 border-blue-500/50 dark:border-cyan-500/50 bg-blue-500/5 dark:bg-cyan-500/5 text-blue-600 dark:text-cyan-300 hover:bg-blue-500/10 dark:hover:bg-cyan-500/20 hover:text-blue-700 dark:hover:text-cyan-100 hover:border-blue-400 dark:hover:border-cyan-400 font-mono shadow-lg shadow-blue-500/20 dark:shadow-cyan-500/20"
+            className="gap-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900/60 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-neutral-400 font-mono shadow-sm transition-all"
+            asChild
           >
-            <Terminal className="w-4 h-4" />
-            View Resume
+            <a href="https://drive.google.com/file/d/161wlf8BaM5RQtFC7poYAP5e1PK1ScwcX/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+              <Terminal className="w-4 h-4" />
+              View Resume
+            </a>
           </Button>
         </motion.div>
 
@@ -293,35 +297,35 @@ export function Hero() {
             href="https://github.com/vrma8"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-lg border border-blue-500/30 dark:border-cyan-500/30 hover:border-blue-400 dark:hover:border-cyan-400 bg-blue-500/5 dark:bg-cyan-500/5 hover:bg-blue-500/10 dark:hover:bg-cyan-500/20 transition-all group"
+            className="p-3 rounded-lg border border-neutral-300 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-neutral-100/50 dark:bg-neutral-900/50 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition-all group"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Github className="w-6 h-6 text-gray-700 dark:text-cyan-300 group-hover:text-blue-600 dark:group-hover:text-cyan-100" />
+            <Github className="w-6 h-6 text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white" />
           </motion.a>
           <motion.a
             href="https://linkedin.com/in/ravi-k-verma"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-3 rounded-lg border border-blue-500/30 dark:border-cyan-500/30 hover:border-blue-400 dark:hover:border-cyan-400 bg-blue-500/5 dark:bg-cyan-500/5 hover:bg-blue-500/10 dark:hover:bg-cyan-500/20 transition-all group"
+            className="p-3 rounded-lg border border-neutral-300 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-neutral-100/50 dark:bg-neutral-900/50 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition-all group"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Linkedin className="w-6 h-6 text-gray-700 dark:text-cyan-300 group-hover:text-blue-600 dark:group-hover:text-cyan-100" />
+            <Linkedin className="w-6 h-6 text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white" />
           </motion.a>
           <motion.a
             href="mailto:24bcs096@nith.ac.in"
-            className="p-3 rounded-lg border border-blue-500/30 dark:border-cyan-500/30 hover:border-blue-400 dark:hover:border-cyan-400 bg-blue-500/5 dark:bg-cyan-500/5 hover:bg-blue-500/10 dark:hover:bg-cyan-500/20 transition-all group"
+            className="p-3 rounded-lg border border-neutral-300 dark:border-neutral-800 hover:border-black dark:hover:border-white bg-neutral-100/50 dark:bg-neutral-900/50 hover:bg-neutral-200/50 dark:hover:bg-neutral-800 transition-all group"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
-            <Mail className="w-6 h-6 text-gray-700 dark:text-cyan-300 group-hover:text-blue-600 dark:group-hover:text-cyan-100" />
+            <Mail className="w-6 h-6 text-neutral-600 dark:text-neutral-400 group-hover:text-black dark:group-hover:text-white" />
           </motion.a>
         </motion.div>
 
         {/* Blinking cursor effect */}
         <motion.div
-          className="mt-8 text-purple-600 dark:text-green-400 font-mono text-2xl"
+          className="mt-8 text-black dark:text-white font-mono text-2xl"
           animate={{ opacity: [1, 0, 1] }}
           transition={{ duration: 1, repeat: Infinity }}
         >

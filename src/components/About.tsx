@@ -1,6 +1,5 @@
 import { GraduationCap, Code, Award, Terminal } from 'lucide-react';
 import { Card, CardContent } from './ui/card';
-import { ImageWithFallback } from './figma/ImageWithFallback';
 import { useState } from 'react';
 import { motion } from 'motion/react';
 import { BinaryRain } from './BinaryRain';
@@ -36,183 +35,163 @@ export function About() {
   return (
     <motion.section 
       id="about" 
-      className="py-26 px-4 relative overflow-hidden min-h-[800px] bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-gray-900 dark:to-black"
-      // ===== SECTION FADE-IN ANIMATION =====
-      // Entire section fades in when scrolling into view
+      className="py-26 px-4 relative overflow-hidden min-h-[800px] bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-neutral-950 dark:to-black"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: false, margin: "-100px" }} // once: false = animate every time you scroll to this section
-      transition={{ duration: 0.8 }} // Animation takes 0.8 seconds
+      viewport={{ once: false, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
     >
       {/* ===== BINARY RAIN BACKGROUND ===== */}
-      {/* Falling binary (0s and 1s) animation in the background */}
       <BinaryRain />
 
-      {/* ===== GLOWING ORBS (ANIMATED DECORATIONS) ===== */}
-      {/* Top-left cyan orb - scales from 0 to 1 when section enters view */}
+      {/* ===== GLOWING ORBS ===== */}
       <motion.div 
-        className="absolute top-20 left-20 w-96 h-96 bg-blue-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl"
-        initial={{ scale: 0, opacity: 0 }} // Starts invisible and tiny
-        whileInView={{ scale: 1, opacity: 1 }} // Grows to full size
-        viewport={{ once: false }} // Animates every time
-        transition={{ duration: 1.2 }} // Slow growth
-      />
-
-      {/* Bottom-right green orb - appears after cyan orb */}
-      <motion.div 
-        className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/5 dark:bg-green-500/10 rounded-full blur-3xl"
+        className="absolute top-20 left-20 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: false }}
-        transition={{ duration: 1.2, delay: 0.3 }} // Starts 0.3s after cyan orb
+        transition={{ duration: 1.2 }}
+      />
+
+      <motion.div 
+        className="absolute bottom-20 right-20 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl"
+        initial={{ scale: 0, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 1.2, delay: 0.3 }}
       />
       
       {/* ===== MAIN CONTENT CONTAINER ===== */}
       <div className="max-w-6xl mx-auto relative z-10">
-        {/* ===== SECTION HEADER (Title + Subtitle) ===== */}
+        {/* ===== SECTION HEADER ===== */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }} // Starts invisible, 20px below
-          whileInView={{ opacity: 1, y: 0 }} // Fades in and moves up
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          {/* TO EDIT SECTION TITLE: Change "About Me" text below */}
-          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono">
-            <span className="text-blue-600 dark:text-cyan-400">{"<"}</span>
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-cyan-400 dark:via-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
-              About Me
-            </span>
-            <span className="text-blue-600 dark:text-cyan-400">{" />"}</span>
+          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono tracking-tight text-black dark:text-white">
+            <span className="text-neutral-400 dark:text-neutral-600">{"<"}</span>
+            <span>About Me</span>
+            <span className="text-neutral-400 dark:text-neutral-600">{" />"}</span>
           </h2>
-          {/* TO EDIT SUBTITLE: Change text below */}
-          <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 font-mono text-sm">
-            <span className="text-purple-600 dark:text-green-400"></span>
+          <p className="text-center text-neutral-500 mb-12 font-mono text-sm">
+            <span>// Personal background & milestones</span>
           </p>
         </motion.div>
 
-        {/* ===== TWO-COLUMN LAYOUT (Text on left, Cards on right) ===== */}
+        {/* ===== TWO-COLUMN LAYOUT ===== */}
         <div className="grid md:grid-cols-2 gap-12 items-start">
           
-          {/* ===== LEFT COLUMN - ABOUT TEXT BLOCKS ===== */}
+          {/* ===== LEFT COLUMN ===== */}
           <motion.div 
             className="space-y-6"
-            // Container slides in from left
-            initial={{ opacity: 0, x: -50 }} // Starts 50px to the left
-            whileInView={{ opacity: 1, x: 0 }} // Slides to normal position
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            {/* PARAGRAPH 1 - TO EDIT: Change text inside <p> tag */}
             <motion.div 
-              className="p-6 bg-white/80 dark:bg-gray-900/50 border border-blue-300 dark:border-cyan-500/30 rounded-lg backdrop-blur-sm shadow-sm"
-              initial={{ opacity: 0, y: 20 }} // Starts invisible, below
-              whileInView={{ opacity: 1, y: 0 }} // Fades in and moves up
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: 0.5 }} // Each paragraph has different delay for stagger
-              whileHover={{ scale: 1.02 }} // Hover: slight scale
-            >
-              <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
-                <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
-                Pre Final Year undergraduate student at National Institute of Technology, Hamirpur, 
-                pursuing Bachelor of Technology in Computer Science and Engineering. 
-                
-              </p>
-            </motion.div>
-            
-            {/* PARAGRAPH 2 - TO EDIT: Change text inside <p> tag */}
-            <motion.div 
-              className="p-6 bg-white/80 dark:bg-gray-900/50 border border-blue-300 dark:border-cyan-500/30 rounded-lg backdrop-blur-sm shadow-sm"
+              className="p-6 bg-white/90 dark:bg-neutral-950/70 border border-neutral-200 dark:border-neutral-800 rounded-lg backdrop-blur-sm shadow-sm hover:border-neutral-400 dark:hover:border-neutral-600 transition-all"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: 0.6 }} // Appears after first paragraph
+              transition={{ duration: 0.5, delay: 0.5 }}
               whileHover={{ scale: 1.02 }}
             >
-              <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
-                <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
-                I am interested in <span className="text-blue-600 dark:text-cyan-400 font-semibold">full-stack Web Development</span> and{" "}
-                <span className="text-blue-600 dark:text-cyan-400 font-semibold">Cyber Security</span>. 
+              <p className="text-neutral-700 dark:text-neutral-300 font-mono leading-relaxed">
+                <span className="text-neutral-400 dark:text-neutral-500">&gt;&gt; </span>
+                Pre Final Year undergraduate student at National Institute of Technology, Hamirpur, 
+                pursuing Bachelor of Technology in Computer Science and Engineering.
+              </p>
+            </motion.div>
+            
+            <motion.div 
+              className="p-6 bg-white/90 dark:bg-neutral-950/70 border border-neutral-200 dark:border-neutral-800 rounded-lg backdrop-blur-sm shadow-sm hover:border-neutral-400 dark:hover:border-neutral-600 transition-all"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <p className="text-neutral-700 dark:text-neutral-300 font-mono leading-relaxed">
+                <span className="text-neutral-400 dark:text-neutral-500">&gt;&gt; </span>
+                I am interested in <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">full-stack Web Development</span> and{" "}
+                <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">Cyber Security</span>. 
                 I am always eager to learn new technologies and improve my existing skillset.
               </p>
             </motion.div>
             
-            {/* PARAGRAPH 3 - TO EDIT: Change text inside <p> tag */}
             <motion.div 
-              className="p-6 bg-white/80 dark:bg-gray-900/50 border border-blue-300 dark:border-cyan-500/30 rounded-lg backdrop-blur-sm shadow-sm"
+              className="p-6 bg-white/90 dark:bg-neutral-950/70 border border-neutral-200 dark:border-neutral-800 rounded-lg backdrop-blur-sm shadow-sm hover:border-neutral-400 dark:hover:border-neutral-600 transition-all"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: 0.7 }} // Last paragraph appears last
+              transition={{ duration: 0.5, delay: 0.7 }}
               whileHover={{ scale: 1.02 }}
             >
-              <p className="text-gray-700 dark:text-cyan-300/90 font-mono leading-relaxed">
-                <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
+              <p className="text-neutral-700 dark:text-neutral-300 font-mono leading-relaxed">
+                <span className="text-neutral-400 dark:text-neutral-500">&gt;&gt; </span>
                 My goal is to create innovative and scalable solutions that make a difference in the world. 
-                I believe in <span className="text-blue-600 dark:text-cyan-400 font-semibold">continuous learning</span> and always improving myself on best practices in software development.
+                I believe in <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">continuous learning</span> and always improving myself on best practices in software development.
               </p>
             </motion.div>
           </motion.div>
 
-          {/* ===== RIGHT COLUMN - INTERACTIVE CARDS (Education, Experience, Achievements) ===== */}
+          {/* ===== RIGHT COLUMN ===== */}
           <div className="space-y-6">
             
             {/* ===== EDUCATION CARD ===== */}
             <motion.div
-              // Slides in from right with scale effect
-              initial={{ opacity: 0, x: 50, scale: 0.9 }} // Starts smaller and to the right
-              whileInView={{ opacity: 1, x: 0, scale: 1 }} // Grows to full size and normal position
+              initial={{ opacity: 0, x: 50, scale: 0.9 }}
+              whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: false }}
-              transition={{ duration: 0.6, delay: 0.5 }} // Adjust delay to change when this appears
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
               <Card 
-                // Dynamic styling based on hover state
-                className={`bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 cursor-pointer transition-all duration-300 backdrop-blur-sm overflow-hidden shadow-sm ${
+                className={`bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 cursor-pointer transition-all duration-300 backdrop-blur-sm overflow-hidden shadow-sm ${
                   hoveredCard === 'education' 
-                    ? 'scale-105 shadow-xl shadow-blue-500/20 dark:shadow-cyan-500/20 border-blue-400 dark:border-cyan-400' // When this card is hovered
+                    ? 'scale-105 shadow-xl shadow-black/5 dark:shadow-white/5 border-black dark:border-white' 
                     : hoveredCard 
-                      ? 'opacity-50 scale-95' // When another card is hovered
-                      : 'hover:shadow-lg hover:border-blue-400 dark:hover:border-cyan-400/50' // Default hover
+                      ? 'opacity-50 scale-95' 
+                      : 'hover:shadow-lg hover:border-neutral-400 dark:hover:border-neutral-600'
                 }`}
-                onMouseEnter={() => setHoveredCard('education')} // Set hover state
-                onMouseLeave={() => setHoveredCard(null)} // Clear hover state
+                onMouseEnter={() => setHoveredCard('education')}
+                onMouseLeave={() => setHoveredCard(null)}
               >
-                {/* Glowing overlay when hovered */}
                 {hoveredCard === 'education' && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 dark:from-cyan-500/10 to-transparent" />
+                  <div className="absolute inset-0 bg-neutral-100/50 dark:bg-white/5" />
                 )}
                 <CardContent className="p-6 relative z-10">
                   <div className="flex items-start gap-4">
-                    {/* Icon with wiggle animation on hover */}
                     <motion.div 
-                      className="p-3 rounded-lg bg-blue-500/10 dark:bg-cyan-500/20 border border-blue-300 dark:border-cyan-500/30"
-                      animate={hoveredCard === 'education' ? { rotate: [0, 10, -10, 0] } : {}} // Wiggle effect
+                      className="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
+                      animate={hoveredCard === 'education' ? { rotate: [0, 10, -10, 0] } : {}}
                       transition={{ duration: 0.5 }}
                     >
-                      <GraduationCap className="w-6 h-6 text-blue-600 dark:text-cyan-400" />
+                      <GraduationCap className="w-6 h-6 text-black dark:text-white" />
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="mb-2 text-blue-700 dark:text-cyan-300 font-mono flex items-center gap-2 font-semibold">
-                        <Terminal className="w-4 h-4" />
+                      <h3 className="mb-2 text-black dark:text-white font-mono flex items-center gap-2 font-semibold">
+                        <Terminal className="w-4 h-4 text-neutral-500" />
                         Education
                       </h3>
-                      {/* Education details - only shown when card is hovered */}
                       {hoveredCard === 'education' && (
                         <motion.ul 
                           className="space-y-2 mt-3"
-                          initial={{ opacity: 0, y: -10 }} // Starts hidden, slightly above
-                          animate={{ opacity: 1, y: 0 }} // Slides down and fades in
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.3 }}
                         >
-                          {/* Map through education details array */}
                           {educationDetails.map((detail, index) => (
                             <motion.li 
                               key={index} 
-                              className="text-sm text-gray-700 dark:text-cyan-300/80 flex items-start gap-2 font-mono"
+                              className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2 font-mono"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: index * 0.1 }} // Each item appears with slight delay
+                              transition={{ delay: index * 0.1 }}
                             >
-                              <span className="text-purple-600 dark:text-green-400 mt-1">▸</span>
+                              <span className="text-neutral-400 dark:text-neutral-500 mt-1">▸</span>
                               <span>{detail}</span>
                             </motion.li>
                           ))}
@@ -225,39 +204,38 @@ export function About() {
             </motion.div>
 
             {/* ===== EXPERIENCE CARD ===== */}
-            {/* Same structure as Education card, but with green theme */}
             <motion.div
               initial={{ opacity: 0, x: 50, scale: 0.9 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: false }}
-              transition={{ duration: 0.6, delay: 0.6 }} // Appears after Education card
+              transition={{ duration: 0.6, delay: 0.6 }}
             >
               <Card 
-                className={`bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 cursor-pointer transition-all duration-300 backdrop-blur-sm overflow-hidden shadow-sm ${
+                className={`bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 cursor-pointer transition-all duration-300 backdrop-blur-sm overflow-hidden shadow-sm ${
                   hoveredCard === 'experience' 
-                    ? 'scale-105 shadow-xl shadow-purple-500/20 dark:shadow-green-500/20 border-purple-400 dark:border-green-400' 
+                    ? 'scale-105 shadow-xl shadow-black/5 dark:shadow-white/5 border-black dark:border-white' 
                     : hoveredCard 
                       ? 'opacity-50 scale-95' 
-                      : 'hover:shadow-lg hover:border-blue-400 dark:hover:border-cyan-400/50'
+                      : 'hover:shadow-lg hover:border-neutral-400 dark:hover:border-neutral-600'
                 }`}
                 onMouseEnter={() => setHoveredCard('experience')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 {hoveredCard === 'experience' && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 dark:from-green-500/10 to-transparent" />
+                  <div className="absolute inset-0 bg-neutral-100/50 dark:bg-white/5" />
                 )}
                 <CardContent className="p-6 relative z-10">
                   <div className="flex items-start gap-4">
                     <motion.div 
-                      className="p-3 rounded-lg bg-purple-500/10 dark:bg-green-500/20 border border-purple-300 dark:border-green-500/30"
+                      className="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
                       animate={hoveredCard === 'experience' ? { rotate: [0, 10, -10, 0] } : {}}
                       transition={{ duration: 0.5 }}
                     >
-                      <Code className="w-6 h-6 text-purple-600 dark:text-green-400" />
+                      <Code className="w-6 h-6 text-black dark:text-white" />
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="mb-2 text-purple-700 dark:text-green-300 font-mono flex items-center gap-2 font-semibold">
-                        <Terminal className="w-4 h-4" />
+                      <h3 className="mb-2 text-black dark:text-white font-mono flex items-center gap-2 font-semibold">
+                        <Terminal className="w-4 h-4 text-neutral-500" />
                         Experience
                       </h3>
                       {hoveredCard === 'experience' && (
@@ -270,12 +248,12 @@ export function About() {
                           {experienceDetails.map((detail, index) => (
                             <motion.li 
                               key={index} 
-                              className="text-sm text-gray-700 dark:text-cyan-300/80 flex items-start gap-2 font-mono"
+                              className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2 font-mono"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.1 }}
                             >
-                              <span className="text-purple-600 dark:text-green-400 mt-1">▸</span>
+                              <span className="text-neutral-400 dark:text-neutral-500 mt-1">▸</span>
                               <span>{detail}</span>
                             </motion.li>
                           ))}
@@ -288,39 +266,38 @@ export function About() {
             </motion.div>
 
             {/* ===== ACHIEVEMENTS CARD ===== */}
-            {/* Same structure as other cards, cyan theme */}
             <motion.div
               initial={{ opacity: 0, x: 50, scale: 0.9 }}
               whileInView={{ opacity: 1, x: 0, scale: 1 }}
               viewport={{ once: false }}
-              transition={{ duration: 0.6, delay: 0.7 }} // Appears last
+              transition={{ duration: 0.6, delay: 0.7 }}
             >
               <Card 
-                className={`bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 cursor-pointer transition-all duration-300 backdrop-blur-sm overflow-hidden shadow-sm ${
+                className={`bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 cursor-pointer transition-all duration-300 backdrop-blur-sm overflow-hidden shadow-sm ${
                   hoveredCard === 'achievements' 
-                    ? 'scale-105 shadow-xl shadow-blue-500/20 dark:shadow-cyan-500/20 border-blue-400 dark:border-cyan-400' 
+                    ? 'scale-105 shadow-xl shadow-black/5 dark:shadow-white/5 border-black dark:border-white' 
                     : hoveredCard 
                       ? 'opacity-50 scale-95' 
-                      : 'hover:shadow-lg hover:border-blue-400 dark:hover:border-cyan-400/50'
+                      : 'hover:shadow-lg hover:border-neutral-400 dark:hover:border-neutral-600'
                 }`}
                 onMouseEnter={() => setHoveredCard('achievements')}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 {hoveredCard === 'achievements' && (
-                  <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 dark:from-cyan-500/10 dark:via-green-500/5 to-transparent" />
+                  <div className="absolute inset-0 bg-neutral-100/50 dark:bg-white/5" />
                 )}
                 <CardContent className="p-6 relative z-10">
                   <div className="flex items-start gap-4">
                     <motion.div 
-                      className="p-3 rounded-lg bg-blue-500/10 dark:bg-cyan-500/20 border border-blue-300 dark:border-cyan-500/30"
+                      className="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800"
                       animate={hoveredCard === 'achievements' ? { rotate: [0, 10, -10, 0] } : {}}
                       transition={{ duration: 0.5 }}
                     >
-                      <Award className="w-6 h-6 text-blue-600 dark:text-cyan-400" />
+                      <Award className="w-6 h-6 text-black dark:text-white" />
                     </motion.div>
                     <div className="flex-1">
-                      <h3 className="mb-2 text-blue-700 dark:text-cyan-300 font-mono flex items-center gap-2 font-semibold">
-                        <Terminal className="w-4 h-4" />
+                      <h3 className="mb-2 text-black dark:text-white font-mono flex items-center gap-2 font-semibold">
+                        <Terminal className="w-4 h-4 text-neutral-500" />
                         Achievements
                       </h3>
                       {hoveredCard === 'achievements' && (
@@ -333,12 +310,12 @@ export function About() {
                           {achievementDetails.map((detail, index) => (
                             <motion.li 
                               key={index} 
-                              className="text-sm text-gray-700 dark:text-cyan-300/80 flex items-start gap-2 font-mono"
+                              className="text-sm text-neutral-700 dark:text-neutral-300 flex items-start gap-2 font-mono"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: index * 0.1 }}
                             >
-                              <span className="text-purple-600 dark:text-green-400 mt-1">▸</span>
+                              <span className="text-neutral-400 dark:text-neutral-500 mt-1">▸</span>
                               <span>{detail}</span>
                             </motion.li>
                           ))}
