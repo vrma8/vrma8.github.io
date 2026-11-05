@@ -1,7 +1,7 @@
 import { Menu, X, Terminal } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 
 

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Instagram, Heart, Terminal, Eye, Users } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 
 export function Footer() {
   const [views, setViews] = useState<number | null>(null);

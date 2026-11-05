@@ -4,7 +4,7 @@ import nexavoiceImg from '../assets/nexavoice.png';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { BinaryRain } from './BinaryRain';
 
 

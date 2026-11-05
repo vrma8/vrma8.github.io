@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Progress } from './ui/progress';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { Code2, Server, Wrench, Shield } from 'lucide-react';
 import { BinaryRain } from './BinaryRain';
 

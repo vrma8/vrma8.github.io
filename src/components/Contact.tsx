@@ -1,5 +1,4 @@
-import React from 'react';
-import { Mail, MapPin, Phone, Send, CheckCircle2, Loader2, Terminal, Instagram } from 'lucide-react';
+import { Mail, MapPin, Send, CheckCircle2, Loader2, Terminal, Instagram } from 'lucide-react';
 import { toast } from 'sonner';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
@@ -7,7 +6,7 @@ import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { BinaryRain } from './BinaryRain';
 
 export function Contact() {

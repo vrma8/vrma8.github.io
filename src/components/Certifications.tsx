@@ -2,7 +2,7 @@ import { Award, ExternalLink, Calendar, Shield } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { BinaryRain } from './BinaryRain';
 
 const certifications = [
