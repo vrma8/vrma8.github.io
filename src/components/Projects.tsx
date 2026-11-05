@@ -52,9 +52,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       // ===== HOVER ANIMATION =====
       whileHover={{ y: -10, scale: 1.02 }} // Lifts up and grows slightly on hover
     >
-      <Card className="flex flex-col overflow-hidden bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 hover:border-blue-400 dark:hover:border-cyan-400 transition-all backdrop-blur-sm group relative shadow-sm">
-        {/* Glowing overlay - appears on hover (using Tailwind 'group' feature) */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-blue-500/0 dark:from-cyan-500/0 dark:via-green-500/0 dark:to-cyan-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 dark:group-hover:from-cyan-500/10 dark:group-hover:via-green-500/5 dark:group-hover:to-cyan-500/10 transition-all duration-500 pointer-events-none" />
+      <Card className="flex flex-col overflow-hidden bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-600 transition-all backdrop-blur-sm group relative shadow-sm">
+        {/* Subtle overlay on hover */}
+        <div className="absolute inset-0 bg-neutral-100/30 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
 
         {/* ===== PROJECT IMAGE ===== */}
         <div className="relative overflow-hidden">
@@ -63,30 +63,26 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
             src={project.image}
             alt={project.title}
             className="w-full h-48 object-cover"
-            whileHover={{ scale: 1.1 }} // Zoom effect
+            whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           />
           {/* Dark gradient overlay for better text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-          {/* OS icon appears on hover (cybersecurity/technical theme) */}
-          <Cpu className="absolute top-4 right-4 w-6 h-6 text-blue-400 dark:text-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+          <Cpu className="absolute top-4 right-4 w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
 
         {/* ===== PROJECT INFO ===== */}
         <CardHeader>
-          {/* Title changes color on hover */}
-          <CardTitle className="text-blue-700 dark:text-cyan-300 font-mono group-hover:text-purple-600 dark:group-hover:text-green-400 transition-colors">
+          <CardTitle className="text-black dark:text-white font-mono group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
             {project.title}
           </CardTitle>
-          <CardDescription className="text-gray-600 dark:text-gray-400 font-mono text-sm">
-            {/* Description is clamped to 3 lines by default; expands on "Read more" click */}
+          <CardDescription className="text-neutral-600 dark:text-neutral-400 font-mono text-sm">
             <span className={!expanded ? 'line-clamp-3' : undefined}>
               {project.description}
             </span>
-            {/* Read more / Read less toggle */}
             <button
               onClick={() => setExpanded((v) => !v)}
-              className="flex items-center gap-0.5 mt-1 text-blue-600 dark:text-cyan-400 hover:text-purple-600 dark:hover:text-green-400 font-mono text-xs font-medium transition-colors"
+              className="flex items-center gap-0.5 mt-1 text-neutral-800 dark:text-neutral-300 hover:text-black dark:hover:text-white underline font-mono text-xs font-medium transition-colors"
               aria-expanded={expanded}
             >
               {expanded ? (
@@ -101,12 +97,11 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
         {/* ===== TECH STACK BADGES ===== */}
         <CardContent className="flex-grow">
           <div className="flex flex-wrap gap-2">
-            {/* Map through technologies array to create badges */}
             {project.technologies.map((tech) => (
               <Badge
                 key={tech}
                 variant="secondary"
-                className="bg-blue-500/10 dark:bg-cyan-500/10 text-blue-700 dark:text-cyan-300 hover:bg-blue-500/20 dark:hover:bg-cyan-500/20 border border-blue-300 dark:border-cyan-500/30 font-mono text-xs"
+                className="bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 font-mono text-xs"
               >
                 {tech}
               </Badge>
@@ -120,7 +115,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <Button
             variant="outline"
             size="sm"
-            className="gap-2 flex-1 border-blue-400 dark:border-cyan-500/50 bg-blue-500/5 dark:bg-cyan-500/5 text-blue-700 dark:text-cyan-300 hover:bg-blue-500/20 dark:hover:bg-cyan-500/20 hover:text-blue-800 dark:hover:text-cyan-100 hover:border-blue-500 dark:hover:border-cyan-400 transition-all font-mono"
+            className="gap-2 flex-1 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900/60 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-neutral-400 transition-all font-mono"
             asChild
           >
             <a href={project.github} target="_blank" rel="noopener noreferrer">
@@ -131,7 +126,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           {/* Live Demo Button */}
           <Button
             size="sm"
-            className="gap-2 flex-1 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-cyan-600 dark:to-green-600 hover:from-blue-500 hover:to-purple-500 dark:hover:from-cyan-500 dark:hover:to-green-500 text-white font-mono shadow-lg shadow-blue-500/20 dark:shadow-cyan-500/20 hover:shadow-blue-500/40 dark:hover:shadow-cyan-500/40 transition-all"
+            className="gap-2 flex-1 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 border border-black dark:border-white font-mono shadow-md transition-all"
             asChild
           >
             <a href={project.demo} target="_blank" rel="noopener noreferrer">
@@ -149,44 +144,35 @@ export function Projects() {
   return (
     <motion.section 
       id="projects" 
-      className="py-20 px-4 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-gray-900 dark:to-black relative"
-      // ===== SECTION FADE-IN ANIMATION =====
+      className="py-20 px-4 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-neutral-950 dark:to-black relative"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: false, margin: "-100px" }} // Triggers animation 100px before section enters view
+      viewport={{ once: false, margin: "-100px" }}
       transition={{ duration: 0.8 }}
     >
       {/* ===== BINARY RAIN BACKGROUND ===== */}
       <BinaryRain />
       
-      
       <div className="max-w-6xl mx-auto relative z-10">
         {/* ===== SECTION HEADER ===== */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }} // Starts invisible, 20px below
-          whileInView={{ opacity: 1, y: 0 }} // Fades in and moves up
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          {/* TO EDIT SECTION TITLE: Change "Projects" text below */}
-          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono">
-            <span className="text-blue-600 dark:text-green-400">&lt;</span>
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-cyan-400 dark:via-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
-              Projects
-            </span>
-            <span className="text-blue-600 dark:text-green-400">/&gt;</span>
+          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono tracking-tight text-black dark:text-white">
+            <span className="text-neutral-400 dark:text-neutral-600">&lt;</span>
+            <span>Projects</span>
+            <span className="text-neutral-400 dark:text-neutral-600">/&gt;</span>
           </h2>
-          {/* TO EDIT SUBTITLE: Change text below */}
-          <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 max-w-2xl mx-auto font-mono text-sm">
-            <span className="text-purple-600 dark:text-green-400"># </span>
-            Showcasing my work
+          <p className="text-center text-neutral-500 mb-12 max-w-2xl mx-auto font-mono text-sm">
+            <span># Selected engineering & open-source work</span>
           </p>
         </motion.div>
 
         {/* ===== PROJECT CARDS GRID ===== */}
-        {/* Grid: 1 column on mobile, 2 on tablet, 3 on desktop */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {/* Map through projects array to create cards */}
+        <div className="grid md:grid-cols-2 max-w-4xl mx-auto gap-8">
           {projects.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
