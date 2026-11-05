@@ -78,7 +78,7 @@ export function Certifications() {
   return (
     <motion.section 
       id="certifications" 
-      className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-black dark:to-black relative overflow-hidden"
+      className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-neutral-950 dark:to-black relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, margin: "-100px" }}
@@ -86,17 +86,6 @@ export function Certifications() {
     >
       {/* ===== BINARY RAIN BACKGROUND ===== */}
       <BinaryRain />
-      
-      {/* Hexagonal pattern background */}
-      <motion.div 
-        className="absolute inset-0 opacity-5"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 0.05 }}
-        viewport={{ once: false }}
-        transition={{ duration: 1 }}
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,255,255,0.1),transparent_50%)]" />
-      </motion.div>
 
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
@@ -105,16 +94,12 @@ export function Certifications() {
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono flex items-center justify-center gap-3">
-            <Shield className="w-10 h-10 text-blue-600 dark:text-cyan-400" />
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-cyan-400 dark:via-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
-              Certifications
-            </span>
+          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono tracking-tight flex items-center justify-center gap-3 text-black dark:text-white">
+            <Shield className="w-10 h-10 text-black dark:text-white" />
+            <span>Certifications</span>
           </h2>
-          <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 max-w-2xl mx-auto font-mono text-sm">
-            <span className="text-purple-600 dark:text-green-400">/* </span>
-            Professional credentials validating my expertise
-            <span className="text-purple-600 dark:text-green-400"> */</span>
+          <p className="text-center text-neutral-500 mb-12 max-w-2xl mx-auto font-mono text-sm">
+            <span>/* Professional credentials validating my expertise */</span>
           </p>
         </motion.div>
 
@@ -133,9 +118,8 @@ export function Certifications() {
               }}
               whileHover={{ scale: 1.05, rotateY: 5 }}
             >
-              <Card className="flex flex-col bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 hover:border-purple-500 dark:hover:border-green-400 transition-all backdrop-blur-sm group relative overflow-hidden h-full shadow-sm">
-                {/* Animated border glow */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 via-purple-500/0 to-blue-500/0 dark:from-cyan-500/0 dark:via-green-500/0 dark:to-cyan-500/0 group-hover:from-blue-500/10 group-hover:via-purple-500/5 group-hover:to-blue-500/10 dark:group-hover:from-cyan-500/20 dark:group-hover:via-green-500/10 dark:group-hover:to-cyan-500/20 transition-all duration-500" />
+              <Card className="flex flex-col bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-600 transition-all backdrop-blur-sm group relative overflow-hidden h-full shadow-sm">
+                <div className="absolute inset-0 bg-neutral-100/30 dark:bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                 
                 <CardHeader className="relative z-10">
                   <div className="flex items-start gap-3 mb-2">
@@ -147,22 +131,22 @@ export function Certifications() {
                       {cert.logo}
                     </motion.div>
                     <div className="flex-1">
-                      <CardTitle className="text-blue-700 dark:text-cyan-300 text-lg leading-tight mb-2 font-mono group-hover:text-purple-600 dark:group-hover:text-green-400 transition-colors">
+                      <CardTitle className="text-black dark:text-white text-lg leading-tight mb-2 font-mono group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
                         {cert.title}
                       </CardTitle>
-                      <CardDescription className="text-gray-600 dark:text-gray-400 text-sm font-mono">
+                      <CardDescription className="text-neutral-600 dark:text-neutral-400 text-sm font-mono">
                         {cert.issuer}
                       </CardDescription>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-blue-600/70 dark:text-cyan-400/70 font-mono">
+                  <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500 font-mono">
                     <Calendar className="w-3 h-3" />
                     {cert.date}
                   </div>
                 </CardHeader>
 
                 <CardContent className="flex-grow space-y-4 relative z-10">
-                  <p className="text-sm text-gray-700 dark:text-gray-300 font-mono">
+                  <p className="text-sm text-neutral-700 dark:text-neutral-300 font-mono">
                     {cert.description}
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -170,20 +154,20 @@ export function Certifications() {
                       <Badge 
                         key={skill} 
                         variant="secondary" 
-                        className="bg-purple-500/10 dark:bg-green-500/10 text-purple-700 dark:text-green-300 hover:bg-purple-500/20 dark:hover:bg-green-500/20 border border-purple-300 dark:border-green-500/30 text-xs font-mono"
+                        className="bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-200 border border-neutral-200 dark:border-neutral-800 text-xs font-mono"
                       >
                         {skill}
                       </Badge>
                     ))}
                   </div>
                   <div className="pt-2">
-                    <p className="text-xs text-gray-500 mb-2 font-mono">
-                      <span className="text-purple-600 dark:text-green-400">ID:</span> {cert.credentialId}
+                    <p className="text-xs text-neutral-500 mb-2 font-mono">
+                      <span>ID:</span> {cert.credentialId}
                     </p>
                     <Button 
                       variant="outline" 
                       size="sm" 
-                      className="w-full gap-2 border-blue-500/50 dark:border-cyan-500/50 bg-blue-500/5 dark:bg-cyan-500/5 text-blue-700 dark:text-cyan-300 hover:bg-blue-500/20 dark:hover:bg-cyan-500/20 hover:text-blue-900 dark:hover:text-cyan-100 hover:border-blue-500 dark:hover:border-cyan-400 transition-all font-mono group/btn" 
+                      className="w-full gap-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900/60 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-neutral-400 transition-all font-mono group/btn" 
                       asChild
                     >
                       <a href={cert.verifyUrl} target="_blank" rel="noopener noreferrer">

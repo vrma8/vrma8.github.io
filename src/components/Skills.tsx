@@ -80,23 +80,18 @@ export function Skills() {
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          {/* TO EDIT SECTION TITLE: Change "Skills & Tech Stack" text */}
-          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono">
-            <span className="text-purple-600 dark:text-green-400">$ </span>
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-green-400 dark:via-cyan-400 dark:to-green-400 bg-clip-text text-transparent">
-              Skills & Tech Stack
-            </span>
+          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono tracking-tight text-black dark:text-white">
+            <span className="text-neutral-400 dark:text-neutral-600">$ </span>
+            <span>Skills & Tech Stack</span>
           </h2>
           {/* TO EDIT SUBTITLE: Change text below */}
-          <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 max-w-2xl mx-auto font-mono text-sm">
-            <span className="text-purple-600 dark:text-green-400">// </span>
-            Proficiency levels across different technology domains
+          <p className="text-center text-neutral-500 mb-12 max-w-2xl mx-auto font-mono text-sm">
+            <span>// Proficiency levels across different technology domains</span>
           </p>
         </motion.div>
 
         {/* ===== SKILLS GRID ===== */}
-        {/* 3 columns on desktop, 1 column on mobile */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Loop through each skill category */}
           {skillCategories.map((category, catIndex) => {
             // Get the icon for this category
@@ -104,70 +99,58 @@ export function Skills() {
             return (
               <motion.div
                 key={category.category}
-                // ===== CARD ENTRANCE ANIMATION =====
-                // 3D flip effect (rotateX) + slide up + fade in
-                initial={{ opacity: 0, y: 50, rotateX: -15 }} // Starts tilted back, below, invisible
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }} // Flips to normal, moves up, visible
+                initial={{ opacity: 0, y: 50, rotateX: -15 }}
+                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: false }}
                 transition={{ 
                   duration: 0.6,
-                  delay: 0.5 + catIndex * 0.15, // Stagger: Each card appears 0.15s after previous
-                  type: "spring", // Bouncy animation
-                  stiffness: 100 // Bounce intensity (lower = more bounce)
+                  delay: 0.4 + catIndex * 0.1,
+                  type: "spring",
+                  stiffness: 100
                 }}
-                whileHover={{ scale: 1.05 }} // Grows 5% on hover
+                whileHover={{ scale: 1.03 }}
               >
-                <Card className="bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 hover:border-purple-400 dark:hover:border-green-400/50 transition-all backdrop-blur-sm group relative overflow-hidden shadow-sm">
-                  {/* Glowing orb in top-right corner - changes on hover */}
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-blue-500/5 dark:bg-cyan-500/10 rounded-full blur-2xl group-hover:bg-purple-500/10 dark:group-hover:bg-green-500/20 transition-all" />
+                <Card className="bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-600 transition-all backdrop-blur-sm group relative overflow-hidden shadow-sm h-full">
+                  <div className="absolute top-0 right-0 w-20 h-20 bg-neutral-200/40 dark:bg-white/5 rounded-full blur-2xl transition-all" />
                   
-                  {/* ===== CARD HEADER (Category name + icon) ===== */}
+                  {/* ===== CARD HEADER ===== */}
                   <CardHeader>
-                    <CardTitle className="text-blue-700 dark:text-cyan-300 font-mono flex items-center gap-2 group-hover:text-purple-600 dark:group-hover:text-green-400 transition-colors">
-                      <Icon className="w-5 h-5" />
+                    <CardTitle className="text-black dark:text-white font-mono flex items-center gap-2 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
+                      <Icon className="w-5 h-5 text-black dark:text-white" />
                       {category.category}
                     </CardTitle>
                   </CardHeader>
 
                   {/* ===== SKILLS LIST ===== */}
                   <CardContent className="space-y-6">
-                    {/* Loop through each skill in this category */}
                     {category.skills.map((skill, index) => (
                       <motion.div 
                         key={skill.name}
-                        // Each skill slides in from left
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false }}
                         transition={{ 
                           duration: 0.5,
-                          // Stagger formula: base delay + category delay + skill delay
-                          delay: 0.6 + catIndex * 0.15 + index * 0.08 
+                          delay: 0.4 + catIndex * 0.1 + index * 0.05 
                         }}
                         className="relative"
                       >
-                        {/* Skill name and percentage */}
                         <div className="flex justify-between mb-2">
-                          <span className="text-sm text-gray-700 dark:text-cyan-300 font-mono">{skill.name}</span>
-                          <span className="text-sm text-purple-600 dark:text-green-400 font-mono">{skill.level}%</span>
+                          <span className="text-sm text-neutral-800 dark:text-neutral-200 font-mono">{skill.name}</span>
+                          <span className="text-sm text-neutral-500 dark:text-neutral-400 font-mono">{skill.level}%</span>
                         </div>
                         
-                        {/* ===== PROGRESS BAR ===== */}
                         <div className="relative">
-                          {/* Background progress bar (gray) */}
-                          <Progress value={skill.level} className="h-2" />
-                          
-                          {/* ===== ANIMATED GLOWING PROGRESS BAR ===== */}
-                          {/* This overlays the gray bar and animates from 0 to skill.level */}
+                          <Progress value={skill.level} className="h-1.5 bg-neutral-200 dark:bg-neutral-800" />
                           <motion.div
-                            className="absolute top-0 left-0 h-2 bg-gradient-to-r from-blue-500 to-purple-500 dark:from-cyan-400 dark:to-green-400 rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)] dark:shadow-[0_0_10px_rgba(0,255,255,0.5)]"
-                            initial={{ width: 0 }} // Starts at 0 width
-                            whileInView={{ width: `${skill.level}%` }} // Fills to skill percentage
+                            className="absolute top-0 left-0 h-1.5 bg-gradient-to-r from-neutral-600 via-neutral-400 to-black dark:from-neutral-500 dark:via-neutral-300 dark:to-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)]"
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
                             viewport={{ once: false }}
                             transition={{ 
-                              duration: 1.2, // Slower fill for dramatic effect
-                              delay: 0.6 + catIndex * 0.15 + index * 0.08, // Same stagger as skill
-                              ease: "easeOut" // Starts fast, ends slow
+                              duration: 1.2,
+                              delay: 0.4 + catIndex * 0.1 + index * 0.05,
+                              ease: "easeOut"
                             }}
                           />
                         </div>

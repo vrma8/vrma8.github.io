@@ -63,7 +63,7 @@ export function Contact() {
   return (
     <motion.section 
       id="contact" 
-      className="py-20 px-4 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-black dark:to-black relative overflow-hidden"
+      className="py-20 px-4 bg-gradient-to-b from-gray-50 via-white to-gray-50 dark:from-black dark:via-neutral-950 dark:to-black relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: false, margin: "-100px" }}
@@ -71,19 +71,17 @@ export function Contact() {
     >
       {/* ===== BINARY RAIN BACKGROUND ===== */}
       <BinaryRain />
-      
-      
-      
+
       {/* Glowing orbs */}
       <motion.div 
-        className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/5 dark:bg-cyan-500/10 rounded-full blur-3xl"
+        className="absolute top-1/4 left-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: false }}
         transition={{ duration: 1.2, delay: 0.2 }}
       />
       <motion.div 
-        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/5 dark:bg-green-500/10 rounded-full blur-3xl"
+        className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl"
         initial={{ scale: 0, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: false }}
@@ -97,15 +95,12 @@ export function Contact() {
           viewport={{ once: false }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono">
-            <span className="text-purple-600 dark:text-green-400">$ </span>
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 dark:from-cyan-400 dark:via-green-400 dark:to-cyan-400 bg-clip-text text-transparent">
-              Get In Touch
-            </span>
+          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono tracking-tight text-black dark:text-white">
+            <span className="text-neutral-400 dark:text-neutral-600">$ </span>
+            <span>Get In Touch</span>
           </h2>
-          <p className="text-center text-gray-600 dark:text-cyan-300/70 mb-12 max-w-2xl mx-auto font-mono text-sm">
-            <span className="text-purple-600 dark:text-green-400">// </span>
-            Initiating secure communication channel...
+          <p className="text-center text-neutral-500 mb-12 max-w-2xl mx-auto font-mono text-sm">
+            <span>// Initiating secure communication channel...</span>
           </p>
         </motion.div>
 
@@ -117,8 +112,8 @@ export function Contact() {
             viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h3 className="mb-6 text-blue-700 dark:text-cyan-300 font-mono flex items-center gap-2">
-              <Terminal className="w-5 h-5" />
+            <h3 className="mb-6 text-black dark:text-white font-mono flex items-center gap-2 font-semibold">
+              <Terminal className="w-5 h-5 text-neutral-500" />
               Contact Information
             </h3>
             <div className="space-y-4">
@@ -130,27 +125,17 @@ export function Contact() {
                 whileHover={{ scale: 1.02 }}
                 style={{ originX: 0 }}
               >
-                <Card className="bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 hover:border-blue-500 dark:hover:border-cyan-400 transition-all backdrop-blur-sm group shadow-sm">
+                <Card className="bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-600 transition-all backdrop-blur-sm group shadow-sm">
                   <CardContent className="flex items-center gap-4 p-4">
-                    <div className="p-3 rounded-lg bg-blue-500/10 dark:bg-cyan-500/20 border border-blue-300 dark:border-cyan-500/30 group-hover:bg-blue-500/20 dark:group-hover:bg-cyan-500/30 transition-all">
-                      <Mail className="w-6 h-6 text-blue-600 dark:text-cyan-400" />
+                    <div className="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-800 transition-all">
+                      <Mail className="w-6 h-6 text-black dark:text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-blue-600 dark:text-cyan-400 font-mono">Email</p>
-                      <p className="text-gray-700 dark:text-cyan-300 font-mono text-sm">24BCS096@nith.ac.in</p>
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 font-mono">Email</p>
+                      <p className="text-neutral-900 dark:text-neutral-100 font-mono text-sm">24BCS096@nith.ac.in</p>
                     </div>
                   </CardContent>
                 </Card>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                whileHover={{ scale: 1.02 }}
-                style={{ originX: 0 }}
-              >
               </motion.div>
 
               <motion.div
@@ -158,18 +143,18 @@ export function Contact() {
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: false }}
-                transition={{ duration: 0.5, delay: 0.7 }}
+                transition={{ duration: 0.5, delay: 0.6 }}
                 whileHover={{ scale: 1.02 }}
                 style={{ originX: 0 }}
               >
-                <Card className="bg-white/80 dark:bg-gray-900/50 border-purple-300 dark:border-green-500/30 hover:border-purple-500 dark:hover:border-green-400 transition-all backdrop-blur-sm group shadow-sm">
+                <Card className="bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-600 transition-all backdrop-blur-sm group shadow-sm">
                   <CardContent className="flex items-center gap-4 p-4">
-                    <div className="p-3 rounded-lg bg-purple-500/10 dark:bg-green-500/20 border border-purple-300 dark:border-green-500/30 group-hover:bg-purple-500/20 dark:group-hover:bg-green-500/30 transition-all">
-                      <Instagram className="w-6 h-6 text-purple-600 dark:text-green-400" />
+                    <div className="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-800 transition-all">
+                      <Instagram className="w-6 h-6 text-black dark:text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-purple-600 dark:text-green-400 font-mono">Instagram</p>
-                      <p className="text-gray-700 dark:text-cyan-300 font-mono text-sm">@vrma_nyt</p>
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 font-mono">Instagram</p>
+                      <p className="text-neutral-900 dark:text-neutral-100 font-mono text-sm">@vrma_nyt</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -183,14 +168,14 @@ export function Contact() {
                 whileHover={{ scale: 1.02 }}
                 style={{ originX: 0 }}
               >
-                <Card className="bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 hover:border-blue-500 dark:hover:border-cyan-400 transition-all backdrop-blur-sm group shadow-sm">
+                <Card className="bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-600 transition-all backdrop-blur-sm group shadow-sm">
                   <CardContent className="flex items-center gap-4 p-4">
-                    <div className="p-3 rounded-lg bg-blue-500/10 dark:bg-cyan-500/20 border border-blue-300 dark:border-cyan-500/30 group-hover:bg-blue-500/20 dark:group-hover:bg-cyan-500/30 transition-all">
-                      <MapPin className="w-6 h-6 text-blue-600 dark:text-cyan-400" />
+                    <div className="p-3 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-800 transition-all">
+                      <MapPin className="w-6 h-6 text-black dark:text-white" />
                     </div>
                     <div>
-                      <p className="text-sm text-blue-600 dark:text-cyan-400 font-mono">Location</p>
-                      <p className="text-gray-700 dark:text-cyan-300 font-mono text-sm">Hamirpur HP, INDIA</p>
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 font-mono">Location</p>
+                      <p className="text-neutral-900 dark:text-neutral-100 font-mono text-sm">Hamirpur HP, INDIA</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -205,7 +190,7 @@ export function Contact() {
             viewport={{ once: false }}
             transition={{ duration: 0.6, delay: 0.5 }}
           >
-            <Card className="bg-white/80 dark:bg-gray-900/50 border-blue-300 dark:border-cyan-500/30 backdrop-blur-sm shadow-sm">
+            <Card className="bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 backdrop-blur-sm shadow-sm">
               <CardContent className="p-6">
                 {isSubmitted ? (
                   <motion.div 
@@ -215,23 +200,23 @@ export function Contact() {
                     transition={{ type: "spring", duration: 0.5 }}
                   >
                     <motion.div 
-                      className="w-16 h-16 bg-purple-500/10 dark:bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-purple-500/50 dark:border-green-500/50"
+                      className="w-16 h-16 bg-neutral-100 dark:bg-neutral-900 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-neutral-300 dark:border-neutral-700"
                       animate={{ rotate: 360 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <CheckCircle2 className="w-8 h-8 text-purple-600 dark:text-green-400" />
+                      <CheckCircle2 className="w-8 h-8 text-black dark:text-white" />
                     </motion.div>
-                    <h3 className="mb-2 text-purple-600 dark:text-green-400 font-mono">Message Sent!</h3>
-                    <p className="text-sm text-gray-600 dark:text-cyan-300/70 font-mono">
-                      <span className="text-purple-600 dark:text-green-400">&gt;&gt; </span>
+                    <h3 className="mb-2 text-black dark:text-white font-mono font-semibold">Message Sent!</h3>
+                    <p className="text-sm text-neutral-600 dark:text-neutral-400 font-mono">
+                      <span>&gt;&gt; </span>
                       Connection established. Response incoming...
                     </p>
                   </motion.div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-sm text-gray-700 dark:text-cyan-300 font-mono">
-                        Name <span className="text-purple-600 dark:text-green-400">*</span>
+                      <Label htmlFor="name" className="text-sm text-neutral-800 dark:text-neutral-200 font-mono">
+                        Name <span className="text-neutral-400 dark:text-neutral-500">*</span>
                       </Label>
                       <Input 
                         id="name" 
@@ -239,13 +224,13 @@ export function Contact() {
                         type="text" 
                         placeholder="root@user" 
                         required 
-                        className="transition-all focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-500 bg-white dark:bg-black/50 border-gray-300 dark:border-cyan-500/30 text-gray-700 dark:text-cyan-300 placeholder:text-gray-400 dark:placeholder:text-cyan-300/30 font-mono focus:border-blue-400 dark:focus:border-cyan-400"
+                        className="transition-all focus:ring-1 focus:ring-black dark:focus:ring-white bg-white dark:bg-neutral-900/60 border-neutral-300 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 font-mono focus:border-black dark:focus:border-white"
                         disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-sm text-gray-700 dark:text-cyan-300 font-mono">
-                        Email <span className="text-purple-600 dark:text-green-400">*</span>
+                      <Label htmlFor="email" className="text-sm text-neutral-800 dark:text-neutral-200 font-mono">
+                        Email <span className="text-neutral-400 dark:text-neutral-500">*</span>
                       </Label>
                       <Input 
                         id="email" 
@@ -253,12 +238,12 @@ export function Contact() {
                         type="email" 
                         placeholder="user@domain.com" 
                         required 
-                        className="transition-all focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-500 bg-white dark:bg-black/50 border-gray-300 dark:border-cyan-500/30 text-gray-700 dark:text-cyan-300 placeholder:text-gray-400 dark:placeholder:text-cyan-300/30 font-mono focus:border-blue-400 dark:focus:border-cyan-400"
+                        className="transition-all focus:ring-1 focus:ring-black dark:focus:ring-white bg-white dark:bg-neutral-900/60 border-neutral-300 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 font-mono focus:border-black dark:focus:border-white"
                         disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="subject" className="text-sm text-gray-700 dark:text-cyan-300 font-mono">
+                      <Label htmlFor="subject" className="text-sm text-neutral-800 dark:text-neutral-200 font-mono">
                         Subject
                       </Label>
                       <Input 
@@ -266,13 +251,13 @@ export function Contact() {
                         name="subject"
                         type="text" 
                         placeholder="[TOPIC]" 
-                        className="transition-all focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-500 bg-white dark:bg-black/50 border-gray-300 dark:border-cyan-500/30 text-gray-700 dark:text-cyan-300 placeholder:text-gray-400 dark:placeholder:text-cyan-300/30 font-mono focus:border-blue-400 dark:focus:border-cyan-400"
+                        className="transition-all focus:ring-1 focus:ring-black dark:focus:ring-white bg-white dark:bg-neutral-900/60 border-neutral-300 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 font-mono focus:border-black dark:focus:border-white"
                         disabled={isSubmitting}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="message" className="text-sm text-gray-700 dark:text-cyan-300 font-mono">
-                        Message <span className="text-purple-600 dark:text-green-400">*</span>
+                      <Label htmlFor="message" className="text-sm text-neutral-800 dark:text-neutral-200 font-mono">
+                        Message <span className="text-neutral-400 dark:text-neutral-500">*</span>
                       </Label>
                       <Textarea
                         id="message"
@@ -280,13 +265,13 @@ export function Contact() {
                         placeholder="# Enter your message here..."
                         rows={5}
                         required
-                        className="transition-all focus:ring-2 focus:ring-blue-500 dark:focus:ring-cyan-500 resize-none bg-white dark:bg-black/50 border-gray-300 dark:border-cyan-500/30 text-gray-700 dark:text-cyan-300 placeholder:text-gray-400 dark:placeholder:text-cyan-300/30 font-mono focus:border-blue-400 dark:focus:border-cyan-400"
+                        className="transition-all focus:ring-1 focus:ring-black dark:focus:ring-white resize-none bg-white dark:bg-neutral-900/60 border-neutral-300 dark:border-neutral-800 text-neutral-900 dark:text-neutral-100 placeholder:text-neutral-400 dark:placeholder:text-neutral-600 font-mono focus:border-black dark:focus:border-white"
                         disabled={isSubmitting}
                       />
                     </div>
                     <Button 
                       type="submit" 
-                      className="w-full gap-2 transition-all hover:gap-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 dark:from-cyan-600 dark:to-green-600 dark:hover:from-cyan-500 dark:hover:to-green-500 font-mono shadow-lg shadow-blue-500/30 dark:shadow-cyan-500/30 hover:shadow-blue-500/50 dark:hover:shadow-cyan-500/50 border border-blue-400/50 dark:border-cyan-400/50" 
+                      className="w-full gap-2 transition-all hover:gap-3 bg-black text-white hover:bg-neutral-800 dark:bg-white dark:text-black dark:hover:bg-neutral-200 font-mono shadow-md border border-black dark:border-white" 
                       disabled={isSubmitting}
                     >
                       {isSubmitting ? (
