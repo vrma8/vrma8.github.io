@@ -24,7 +24,6 @@ import {
   Braces
 } from 'lucide-react';
 import { BinaryRain } from './BinaryRain';
-import { soundFX } from '../utils/audio';
 
 interface SkillItem {
   name: string;
@@ -83,31 +82,29 @@ const skillCategories: SkillCategory[] = [
   {
     title: 'Security & DevOps',
     categoryIcon: ShieldCheck,
-    description: 'Offensive web security, containerization, and infrastructure tools',
+    description: 'Offensive security auditing, containerization, and automated workflows',
     skills: [
-      { name: 'Web Pentesting', tag: 'Offensive Security', icon: Bug },
-      { name: 'OWASP Top 10', tag: 'Audit & Mitigation', icon: Lock },
-      { name: 'Network Security', tag: 'TCP/IP & Packet Analysis', icon: Network },
+      { name: 'Penetration Testing', tag: 'Web & Network', icon: ShieldCheck },
+      { name: 'OWASP Top 10', tag: 'AppSec Auditing', icon: Lock },
+      { name: 'Wireshark & Nmap', tag: 'Packet Analysis', icon: Network },
+      { name: 'Burp Suite', tag: 'Vulnerability Audit', icon: Bug },
       { name: 'Docker', tag: 'Containerization', icon: Container },
-      { name: 'Git & GitHub', tag: 'VCS & CI/CD', icon: GitBranch },
-      { name: 'Linux / Kali', tag: 'Security Distro', icon: Terminal },
-      { name: 'AWS & Vercel', tag: 'Cloud Deployment', icon: Cloud },
-      { name: 'Figma', tag: 'Product Design', icon: Palette },
+      { name: 'Git & GitHub CI', tag: 'Version Control', icon: GitBranch },
+      { name: 'Linux Administration', tag: 'Arch / Debian', icon: Terminal },
+      { name: 'Cloud Services', tag: 'AWS / Cloudflare', icon: Cloud },
     ],
   },
 ];
 
 const securityProtocols = [
-  "Nmap",
-  "Metasploit",
-  "Wireshark",
-  "Burp Suite",
-  "UEFI Boot",
-  "4-Level Paging",
-  "FAT32 Driver",
-  "APIC Management",
-  "TCP/IP Stack",
-  "Reverse Engineering"
+  'GDB / Debugging',
+  'Wireshark',
+  'Burp Suite',
+  'Nmap Network Mapper',
+  'Metasploit',
+  'Docker Engine',
+  'Git Workflows',
+  'Linux CLI',
 ];
 
 export function Skills() {
@@ -116,7 +113,7 @@ export function Skills() {
   return (
     <motion.section 
       id="skills" 
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-neutral-950 dark:to-black relative overflow-hidden"
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-white dark:bg-black relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, margin: "-80px" }}
@@ -125,9 +122,9 @@ export function Skills() {
       {/* ===== BINARY RAIN BACKGROUND ===== */}
       <BinaryRain />
 
-      {/* Ambient background glows */}
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
+      {/* Subtle ambient lighting */}
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* ===== SECTION HEADER ===== */}
@@ -140,20 +137,20 @@ export function Skills() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100/80 dark:bg-neutral-900/80 font-mono text-xs text-neutral-600 dark:text-neutral-400 mb-4">
             <Wrench className="w-3.5 h-3.5 text-black dark:text-white" />
-            <span>Tech Stack & Competencies</span>
+            <span>Technical Capabilities</span>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl font-bold font-mono tracking-tight text-black dark:text-white">
-            <span className="text-neutral-400 dark:text-neutral-600">$ </span>
-            <span>Skills & Technologies</span>
+          <h2 className="text-3xl sm:text-5xl font-bold font-mono tracking-tight flex items-center justify-center gap-3 text-black dark:text-white">
+            <Code2 className="w-8 h-8 sm:w-10 sm:h-10 text-black dark:text-white" />
+            <span>Technical Arsenal</span>
           </h2>
           <p className="text-neutral-500 font-mono text-sm sm:text-base mt-2 max-w-xl mx-auto">
-            <span>// Technologies, systems architecture, and security tooling</span>
+            <span>/* Categorized technologies, low-level tooling, and security competencies */</span>
           </p>
         </motion.div>
 
-        {/* ===== SKILLS CATEGORY GRID ===== */}
-        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+        {/* ===== 4-CATEGORY SKILLS GRID ===== */}
+        <div className="grid md:grid-cols-2 gap-6 items-stretch">
           {skillCategories.map((cat, catIdx) => {
             const HeaderIcon = cat.categoryIcon;
             const isHovered = activeCategory === catIdx;
@@ -216,9 +213,7 @@ export function Skills() {
                             key={skill.name}
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.97 }}
-                            onMouseEnter={() => soundFX.playKeypress()}
-                            onClick={() => soundFX.playBeep()}
-                            className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/80 dark:bg-neutral-900/40 hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:border-black dark:hover:border-neutral-500 transition-all duration-200 flex items-start gap-2.5 group/item cursor-pointer select-none"
+                            className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/80 dark:bg-neutral-900/40 hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:border-black dark:hover:border-neutral-500 transition-all duration-200 flex items-start gap-2.5 group/item cursor-default select-none"
                           >
                             <div className="p-1.5 rounded-md bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 shrink-0 mt-0.5 group-hover/item:border-black dark:group-hover/item:border-white transition-colors">
                               <SkillIcon className="w-3.5 h-3.5 text-black dark:text-white" />
@@ -263,9 +258,7 @@ export function Skills() {
                   key={tool}
                   whileHover={{ scale: 1.08 }}
                   whileTap={{ scale: 0.95 }}
-                  onMouseEnter={() => soundFX.playKeypress()}
-                  onClick={() => soundFX.playBeep()}
-                  className="px-2.5 py-1 rounded-md text-xs font-mono bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-colors cursor-pointer select-none"
+                  className="px-2.5 py-1 rounded-md text-xs font-mono bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-colors cursor-default select-none"
                 >
                   {tool}
                 </motion.span>
