@@ -28,7 +28,7 @@ export function About() {
   const experienceItems = [
     {
       role: "Domain Lead",
-      organization: "SHIELD NITH (Cybersecurity Club)",
+      organization: "SHIELD NITH (Cybersecurity Society NITH)",
       description: "Leading technical workshops and hands-on sessions on web security and pentesting."
     },
     {

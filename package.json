@@ -54,6 +54,8 @@
   "devDependencies": {
     "@tailwindcss/vite": "4.3.3",
     "@types/node": "^26.1.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^6.0.5",
     "gh-pages": "^6.3.0",
     "tailwindcss": "4.3.3",

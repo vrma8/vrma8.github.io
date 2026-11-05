@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, Terminal, Code2, GraduationCap, Sparkles } from "lucide-react";
 import { Button } from "./ui/button";
 import { useState, useEffect, useMemo, useCallback } from "react";
+import type { MouseEvent } from "react";
 import { motion } from "motion/react";
 import profileIMG from "../assets/ravi.jpg";
 import { BinaryRain } from "./BinaryRain";
@@ -99,7 +100,7 @@ export function Hero({ onOpenTerminal }: HeroProps) {
     })), []
   );
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width - 0.5;
     const y = (e.clientY - rect.top) / rect.height - 0.5;

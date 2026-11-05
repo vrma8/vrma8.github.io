@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Terminal as TerminalIcon, X, Maximize2, Minimize2, CornerDownLeft, Volume2, VolumeX } from 'lucide-react';
-import { soundFX } from '../utils/audio';
+import { Terminal as TerminalIcon, X, Maximize2, Minimize2, CornerDownLeft } from 'lucide-react';
 
 interface TerminalModalProps {
   isOpen: boolean;
@@ -24,7 +23,6 @@ const COMMANDS = [
   'resume',
   'whoami',
   'clear',
-  'audio',
   'sudo',
   'exit'
 ];
@@ -48,7 +46,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
   const [historyIndex, setHistoryIndex] = useState<number>(-1);
   const [commandList, setCommandList] = useState<string[]>([]);
   const [isMaximized, setIsMaximized] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(soundFX.enabled);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const terminalBottomRef = useRef<HTMLDivElement>(null);
@@ -59,7 +56,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
       setTimeout(() => {
         inputRef.current?.focus();
       }, 100);
-      soundFX.playBeep();
     }
   }, [isOpen]);
 
@@ -78,11 +74,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
-
-  const toggleSound = () => {
-    const state = soundFX.toggle();
-    setSoundEnabled(state);
-  };
 
   const executeCommand = (cmd: string) => {
     const trimmed = cmd.trim();
@@ -113,13 +104,11 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
               <div><span className="text-black dark:text-white font-bold">contact</span> - Email, socials & communication</div>
               <div><span className="text-black dark:text-white font-bold">resume</span> - Open verified PDF resume</div>
               <div><span className="text-black dark:text-white font-bold">whoami</span> - Inspect active session identity</div>
-              <div><span className="text-black dark:text-white font-bold">audio</span> - Toggle browser sound synthesizer</div>
               <div><span className="text-black dark:text-white font-bold">clear</span> - Flush terminal buffer</div>
               <div><span className="text-black dark:text-white font-bold">exit</span> - Close terminal shell</div>
             </div>
           </div>
         );
-        soundFX.playSuccess();
         break;
 
       case 'about':
@@ -131,7 +120,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             <p className="text-xs pt-1 text-neutral-400">Focus: Systems architecture, low-level programming, web engineering, and offensive/defensive cybersecurity.</p>
           </div>
         );
-        soundFX.playSuccess();
         break;
 
       case 'skills':
@@ -146,7 +134,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             </div>
           </div>
         );
-        soundFX.playSuccess();
         break;
 
       case 'projects':
@@ -163,7 +150,7 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
               </div>
               <div className="p-2 border border-neutral-700 rounded bg-neutral-900/60">
                 <p className="font-bold text-white">02. vrma8.github.io - High-Performance Monochromatic Cyber Portfolio</p>
-                <p className="text-neutral-400">React 19, TypeScript, Tailwind CSS v4, Motion, Web Audio</p>
+                <p className="text-neutral-400">React 19, TypeScript, Tailwind CSS v4, Motion</p>
                 <a href="https://github.com/vrma8/vrma8.github.io" target="_blank" rel="noreferrer" className="text-neutral-300 hover:text-white underline mt-1 inline-block">
                   &gt; View on GitHub
                 </a>
@@ -171,7 +158,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             </div>
           </div>
         );
-        soundFX.playSuccess();
         break;
 
       case 'certifications':
@@ -186,25 +172,22 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             <p>• <span className="font-semibold text-white">Introduction to Programming with Python</span> — CS50x Harvard</p>
           </div>
         );
-        soundFX.playSuccess();
         break;
 
       case 'contact':
         output = (
-          <div className="space-y-1 text-xs text-neutral-300 py-1">
+          <div className="space-y-1 text-xs text-neutral-300 py-1 font-mono">
             <p className="font-semibold text-white">Direct Communication Channels:</p>
             <p>• Email: <span className="font-mono text-white selection:bg-white selection:text-black">24BCS096@nith.ac.in</span></p>
             <p>• GitHub: <a href="https://github.com/vrma8" target="_blank" rel="noreferrer" className="underline text-neutral-200">github.com/vrma8</a></p>
             <p>• LinkedIn: <a href="https://linkedin.com/in/ravi-kumar-verma-nith" target="_blank" rel="noreferrer" className="underline text-neutral-200">linkedin.com/in/ravi-kumar-verma-nith</a></p>
           </div>
         );
-        soundFX.playSuccess();
         break;
 
       case 'resume':
         window.open('https://drive.google.com/file/d/161wlf8BaM5RQtFC7poYAP5e1PK1ScwcX/view?usp=sharing', '_blank');
         output = <p className="text-emerald-400 text-xs">Opening resume document in a new window...</p>;
-        soundFX.playSuccess();
         break;
 
       case 'whoami':
@@ -216,13 +199,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             <p>AGENT: {navigator.userAgent.slice(0, 50)}...</p>
           </div>
         );
-        soundFX.playSuccess();
-        break;
-
-      case 'audio':
-        const nextState = soundFX.toggle();
-        setSoundEnabled(nextState);
-        output = <p className="text-xs text-neutral-300">Synthesizer Sound FX: <span className={nextState ? "text-emerald-400 font-bold" : "text-neutral-400"}>{nextState ? "ENABLED" : "MUTED"}</span></p>;
         break;
 
       case 'sudo':
@@ -231,7 +207,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             [SECURITY ALERT] User is not in the sudoers file. This incident has been logged and reported to root@ravi.
           </p>
         );
-        soundFX.playError();
         break;
 
       case 'clear':
@@ -248,7 +223,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
             command not found: <span className="text-red-400">{cmd}</span>. Type <span className="text-white font-bold">help</span> to view available commands.
           </p>
         );
-        soundFX.playError();
         break;
     }
 
@@ -256,8 +230,6 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    soundFX.playKeypress();
-
     if (e.key === 'Enter') {
       e.preventDefault();
       executeCommand(input);
@@ -314,26 +286,7 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
               </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              {/* Audio Toggle */}
-              <button
-                onClick={toggleSound}
-                className="text-neutral-400 hover:text-white text-xs flex items-center gap-1.5 px-2 py-1 rounded bg-neutral-900 border border-neutral-800 transition-colors cursor-pointer"
-                title="Toggle Web Audio SFX"
-              >
-                {soundEnabled ? (
-                  <>
-                    <Volume2 className="w-3 h-3 text-emerald-400" />
-                    <span className="hidden sm:inline text-[11px]">SFX: ON</span>
-                  </>
-                ) : (
-                  <>
-                    <VolumeX className="w-3 h-3 text-neutral-500" />
-                    <span className="hidden sm:inline text-[11px]">SFX: OFF</span>
-                  </>
-                )}
-              </button>
-
+            <div className="flex items-center gap-2">
               <button
                 onClick={() => setIsMaximized(!isMaximized)}
                 className="text-neutral-400 hover:text-white p-1 rounded hover:bg-neutral-800 transition-colors"
@@ -407,4 +360,3 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
     </AnimatePresence>
   );
 }
-
