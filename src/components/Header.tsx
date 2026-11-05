@@ -1,8 +1,7 @@
-import { Menu, X, Terminal, Volume2, VolumeX } from 'lucide-react';
+import { Menu, X, Terminal } from 'lucide-react';
 import { Button } from './ui/button';
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { soundFX } from '../utils/audio';
 
 interface HeaderProps {
   onOpenTerminal?: () => void;
@@ -10,12 +9,6 @@ interface HeaderProps {
 
 export function Header({ onOpenTerminal }: HeaderProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(soundFX.enabled);
-
-  const toggleSound = () => {
-    const active = soundFX.toggle();
-    setSoundEnabled(active);
-  };
 
   const navItems = [
     { label: 'About', href: '#about' },
@@ -40,7 +33,6 @@ export function Header({ onOpenTerminal }: HeaderProps) {
             className="flex items-center gap-2 text-xl sm:text-2xl font-mono cursor-pointer"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => soundFX.playBeep()}
           >
             <Terminal className="w-5 h-5 sm:w-6 sm:h-6 text-black dark:text-white" />
             <span className="text-black dark:text-white font-bold tracking-tight">
@@ -62,7 +54,6 @@ export function Header({ onOpenTerminal }: HeaderProps) {
                 >
                   <motion.a
                     href={item.href}
-                    onClick={() => soundFX.playKeypress()}
                     className="text-neutral-600 dark:text-neutral-400 hover:text-black dark:hover:text-white transition-colors font-mono text-sm relative group"
                     whileHover={{ scale: 1.05 }}
                   >
@@ -93,21 +84,6 @@ export function Header({ onOpenTerminal }: HeaderProps) {
                 </kbd>
               </motion.button>
             )}
-
-            {/* Sound FX Toggle */}
-            <motion.button
-              onClick={toggleSound}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.92 }}
-              className="p-1.5 rounded-md border border-neutral-300 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-400 bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors cursor-pointer"
-              title={soundEnabled ? "Disable Synthesizer SFX" : "Enable Synthesizer SFX"}
-            >
-              {soundEnabled ? (
-                <Volume2 className="w-4 h-4 text-emerald-500" />
-              ) : (
-                <VolumeX className="w-4 h-4 text-neutral-400" />
-              )}
-            </motion.button>
           </div>
 
           {/* ===== MOBILE MENU BUTTONS (Hamburger) ===== */}
@@ -161,26 +137,6 @@ export function Header({ onOpenTerminal }: HeaderProps) {
                 </motion.li>
               ))}
             </ul>
-
-            <div className="flex items-center justify-between pt-2 border-t border-neutral-200 dark:border-neutral-800 text-xs font-mono">
-              <span className="text-neutral-500">Audio Synthesizer:</span>
-              <button
-                onClick={toggleSound}
-                className="flex items-center gap-1.5 px-2 py-1 rounded bg-neutral-100 dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200"
-              >
-                {soundEnabled ? (
-                  <>
-                    <Volume2 className="w-3 h-3 text-emerald-500" />
-                    <span>ENABLED</span>
-                  </>
-                ) : (
-                  <>
-                    <VolumeX className="w-3 h-3 text-neutral-500" />
-                    <span>MUTED</span>
-                  </>
-                )}
-              </button>
-            </div>
           </motion.div>
         )}
       </nav>
