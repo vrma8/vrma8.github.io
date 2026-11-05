@@ -199,8 +199,8 @@ export function Hero() {
           >
             <span className="text-neutral-400 dark:text-neutral-500 font-bold">&gt;&gt; </span>
             Passionate about creating innovative solutions through code. Specializing in{" "}
-            <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">web development</span> and{" "}
-            <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">cybersecurity</span>.
+            <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">Software Development</span> and{" "}
+            <span className="text-black dark:text-white font-semibold underline decoration-neutral-400 dark:decoration-neutral-600 underline-offset-4">Cybersecurity</span>.
           </motion.p>
 
           {/* Action Buttons */}
