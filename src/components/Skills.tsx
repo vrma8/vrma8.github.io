@@ -1,169 +1,271 @@
+import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Progress } from './ui/progress';
 import { motion } from 'motion/react';
-import { Code2, Server, Wrench, Shield } from 'lucide-react';
+import { 
+  Code2, 
+  Server, 
+  ShieldCheck, 
+  Wrench, 
+  Cpu, 
+  Globe, 
+  Database, 
+  Terminal, 
+  Layers, 
+  Container, 
+  GitBranch, 
+  Cloud, 
+  Binary, 
+  Radio, 
+  Bug, 
+  Lock, 
+  Network, 
+  Palette, 
+  Sparkles,
+  Braces
+} from 'lucide-react';
 import { BinaryRain } from './BinaryRain';
 
+interface SkillItem {
+  name: string;
+  tag: string;
+  icon: React.ComponentType<{ className?: string }>;
+}
 
-const skillCategories = [
+interface SkillCategory {
+  title: string;
+  categoryIcon: React.ComponentType<{ className?: string }>;
+  description: string;
+  skills: SkillItem[];
+}
+
+const skillCategories: SkillCategory[] = [
   {
-    category: 'Frontend', // CATEGORY NAME
+    title: 'Languages & Systems',
+    categoryIcon: Cpu,
+    description: 'Low-level kernel programming, systems architecture, and core languages',
     skills: [
-      { name: 'React/Next.js', level: 85 }, // name: Skill name, level: Percentage (0-100)
-      { name: 'TypeScript', level: 80 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'HTML/CSS', level: 95 },
-      // TO ADD MORE: Copy the line above, paste below, change name and level
+      { name: 'C', tag: 'Systems / OS', icon: Cpu },
+      { name: 'x86_64 Assembly', tag: 'Kernel / Boot', icon: Binary },
+      { name: 'Python', tag: 'Automation & Sec', icon: Terminal },
+      { name: 'TypeScript', tag: 'Typed Full-Stack', icon: Braces },
+      { name: 'JavaScript (ES6+)', tag: 'Web & Runtime', icon: Code2 },
+      { name: 'Bash / Shell', tag: 'Linux Scripting', icon: Terminal },
+      { name: 'SQL', tag: 'Relational DB', icon: Database },
     ],
   },
   {
-    category: 'Backend',
+    title: 'Frontend & Web Tech',
+    categoryIcon: Globe,
+    description: 'Modern, high-performance UI engineering and reactive web applications',
     skills: [
-      { name: 'Node.js', level: 75 },
-      { name: 'Python', level: 80 },
-      { name: 'SQL', level: 70 },
-      { name: 'RESTful APIs', level: 85 },
+      { name: 'React 19', tag: 'UI Library', icon: Layers },
+      { name: 'Next.js 15', tag: 'Full-Stack SSR', icon: Globe },
+      { name: 'Tailwind CSS v4', tag: 'Design Systems', icon: Palette },
+      { name: 'HTML5 & CSS3', tag: 'Semantic Web', icon: Code2 },
+      { name: 'WebRTC', tag: 'Realtime Audio/P2P', icon: Radio },
+      { name: 'Motion / Framer', tag: 'Interactive UX', icon: Sparkles },
     ],
   },
   {
-    category: 'Tools & Others',
+    title: 'Backend & Infrastructure',
+    categoryIcon: Server,
+    description: 'Scalable services, database architecture, and realtime pipelines',
     skills: [
-      { name: 'Git/GitHub', level: 85 },
-      { name: 'Docker', level: 60 },
-      { name: 'AWS', level: 65 },
-      { name: 'Figma', level: 75 },
+      { name: 'Node.js', tag: 'Server Runtime', icon: Server },
+      { name: 'RESTful APIs', tag: 'Architecture', icon: Network },
+      { name: 'PostgreSQL', tag: 'Relational Store', icon: Database },
+      { name: 'Prisma ORM', tag: 'Data Modeling', icon: Layers },
+      { name: 'WebSockets', tag: 'Bidirectional Stream', icon: Radio },
+      { name: 'Conversational AI', tag: 'Agora Realtime', icon: Sparkles },
     ],
   },
   {
-    category: 'Cyber Security',
+    title: 'Security & DevOps',
+    categoryIcon: ShieldCheck,
+    description: 'Offensive web security, containerization, and infrastructure tools',
     skills: [
-      { name: 'Networking', level: 80 },
-      { name: 'Web Pentesting', level: 75 },
-      { name: 'Reverse Engineering', level: 70 },
-      { name: 'Forensics', level: 65 },
+      { name: 'Web Pentesting', tag: 'Offensive Security', icon: Bug },
+      { name: 'OWASP Top 10', tag: 'Audit & Mitigation', icon: Lock },
+      { name: 'Network Security', tag: 'TCP/IP & Packet Analysis', icon: Network },
+      { name: 'Docker', tag: 'Containerization', icon: Container },
+      { name: 'Git & GitHub', tag: 'VCS & CI/CD', icon: GitBranch },
+      { name: 'Linux / Kali', tag: 'Security Distro', icon: Terminal },
+      { name: 'AWS & Vercel', tag: 'Cloud Deployment', icon: Cloud },
+      { name: 'Figma', tag: 'Product Design', icon: Palette },
     ],
   },
-  // TO ADD NEW CATEGORY: Copy the object above, paste here, and edit
+];
+
+const securityProtocols = [
+  "Nmap",
+  "Metasploit",
+  "Wireshark",
+  "Burp Suite",
+  "UEFI Boot",
+  "4-Level Paging",
+  "FAT32 Driver",
+  "APIC Management",
+  "TCP/IP Stack",
+  "Reverse Engineering"
 ];
 
 export function Skills() {
-  // ===== ICON MAPPING =====
-  // Maps category names to their icons
-  // TO CHANGE ICONS: Import new icon from 'lucide-react' and change here
-  const icons = {
-    'Frontend': Code2,    // Code icon for frontend
-    'Backend': Server,    // Server icon for backend
-    'Tools & Others': Wrench,  // Wrench icon for tools
-    'Cyber Security': Shield  // Shield icon for cyber security
-  };
+  const [activeCategory, setActiveCategory] = useState<number | null>(null);
 
   return (
     <motion.section 
       id="skills" 
-      className="py-20 px-4 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-black dark:to-black relative overflow-hidden"
-      // ===== SECTION FADE-IN ANIMATION =====
+      className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-black dark:via-neutral-950 dark:to-black relative overflow-hidden"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: false, margin: "-100px" }}
+      viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.8 }}
     >
       {/* ===== BINARY RAIN BACKGROUND ===== */}
       <BinaryRain />
-      
-     
+
+      {/* Ambient background glows */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-neutral-300/10 dark:bg-white/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* ===== SECTION HEADER ===== */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
         >
-          <h2 className="text-center mb-4 text-2xl md:text-5xl font-bold font-mono tracking-tight text-black dark:text-white">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-100/80 dark:bg-neutral-900/80 font-mono text-xs text-neutral-600 dark:text-neutral-400 mb-4">
+            <Wrench className="w-3.5 h-3.5 text-black dark:text-white" />
+            <span>Tech Stack & Competencies</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl font-bold font-mono tracking-tight text-black dark:text-white">
             <span className="text-neutral-400 dark:text-neutral-600">$ </span>
-            <span>Skills & Tech Stack</span>
+            <span>Skills & Technologies</span>
           </h2>
-          {/* TO EDIT SUBTITLE: Change text below */}
-          <p className="text-center text-neutral-500 mb-12 max-w-2xl mx-auto font-mono text-sm">
-            <span>// Proficiency levels across different technology domains</span>
+          <p className="text-neutral-500 font-mono text-sm sm:text-base mt-2 max-w-xl mx-auto">
+            <span>// Technologies, systems architecture, and security tooling</span>
           </p>
         </motion.div>
 
-        {/* ===== SKILLS GRID ===== */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Loop through each skill category */}
-          {skillCategories.map((category, catIndex) => {
-            // Get the icon for this category
-            const Icon = icons[category.category as keyof typeof icons];
+        {/* ===== SKILLS CATEGORY GRID ===== */}
+        <div className="grid md:grid-cols-2 gap-8 items-stretch">
+          {skillCategories.map((cat, catIdx) => {
+            const HeaderIcon = cat.categoryIcon;
+            const isHovered = activeCategory === catIdx;
+
             return (
               <motion.div
-                key={category.category}
-                initial={{ opacity: 0, y: 50, rotateX: -15 }}
-                whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                viewport={{ once: false }}
+                key={cat.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ 
                   duration: 0.6,
-                  delay: 0.4 + catIndex * 0.1,
+                  delay: 0.15 + catIdx * 0.1,
                   type: "spring",
                   stiffness: 100
                 }}
-                whileHover={{ scale: 1.03 }}
+                onMouseEnter={() => setActiveCategory(catIdx)}
+                onMouseLeave={() => setActiveCategory(null)}
+                className="h-full"
               >
-                <Card className="bg-white/90 dark:bg-neutral-950/70 border-neutral-200 dark:border-neutral-800 hover:border-black dark:hover:border-neutral-600 transition-all backdrop-blur-sm group relative overflow-hidden shadow-sm h-full">
-                  <div className="absolute top-0 right-0 w-20 h-20 bg-neutral-200/40 dark:bg-white/5 rounded-full blur-2xl transition-all" />
-                  
-                  {/* ===== CARD HEADER ===== */}
-                  <CardHeader>
-                    <CardTitle className="text-black dark:text-white font-mono flex items-center gap-2 group-hover:text-neutral-700 dark:group-hover:text-neutral-300 transition-colors">
-                      <Icon className="w-5 h-5 text-black dark:text-white" />
-                      {category.category}
+                <Card className={`h-full flex flex-col bg-white/95 dark:bg-neutral-950/80 border transition-all duration-300 backdrop-blur-sm group shadow-sm overflow-hidden ${
+                  isHovered 
+                    ? 'border-black dark:border-neutral-500 shadow-xl dark:shadow-white/5' 
+                    : 'border-neutral-200 dark:border-neutral-800'
+                }`}>
+                  {/* Category Top Banner */}
+                  <div className="px-5 py-3 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-100/70 dark:bg-neutral-900/60 flex items-center justify-between font-mono text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-neutral-400 dark:text-neutral-500">
+                        [0{catIdx + 1}]
+                      </span>
+                      <span className="text-black dark:text-white font-semibold">
+                        {cat.title}
+                      </span>
+                    </div>
+                    <span className="text-neutral-500 text-xs">
+                      {cat.skills.length} tools
+                    </span>
+                  </div>
+
+                  <CardHeader className="pt-4 pb-2">
+                    <CardTitle className="text-lg font-mono text-black dark:text-white flex items-center gap-2.5">
+                      <div className="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 group-hover:bg-neutral-200 dark:group-hover:bg-neutral-800 transition-colors">
+                        <HeaderIcon className="w-4 h-4 text-black dark:text-white" />
+                      </div>
+                      <span>{cat.title}</span>
                     </CardTitle>
+                    <p className="text-xs font-mono text-neutral-500 pt-1">
+                      {cat.description}
+                    </p>
                   </CardHeader>
 
-                  {/* ===== SKILLS LIST ===== */}
-                  <CardContent className="space-y-6">
-                    {category.skills.map((skill, index) => (
-                      <motion.div 
-                        key={skill.name}
-                        initial={{ opacity: 0, x: -20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ 
-                          duration: 0.5,
-                          delay: 0.4 + catIndex * 0.1 + index * 0.05 
-                        }}
-                        className="relative"
-                      >
-                        <div className="flex justify-between mb-2">
-                          <span className="text-sm text-neutral-800 dark:text-neutral-200 font-mono">{skill.name}</span>
-                          <span className="text-sm text-neutral-500 dark:text-neutral-400 font-mono">{skill.level}%</span>
-                        </div>
-                        
-                        <div className="relative">
-                          <Progress value={skill.level} className="h-1.5 bg-neutral-200 dark:bg-neutral-800" />
-                          <motion.div
-                            className="absolute top-0 left-0 h-1.5 bg-gradient-to-r from-neutral-600 via-neutral-400 to-black dark:from-neutral-500 dark:via-neutral-300 dark:to-white rounded-full shadow-[0_0_8px_rgba(255,255,255,0.4)]"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.level}%` }}
-                            viewport={{ once: false }}
-                            transition={{ 
-                              duration: 1.2,
-                              delay: 0.4 + catIndex * 0.1 + index * 0.05,
-                              ease: "easeOut"
-                            }}
-                          />
-                        </div>
-                      </motion.div>
-                    ))}
+                  {/* Technology Chips Grid */}
+                  <CardContent className="pt-3 pb-6 flex-grow">
+                    <div className="grid grid-cols-2 gap-2.5">
+                      {cat.skills.map((skill) => {
+                        const SkillIcon = skill.icon;
+                        return (
+                          <div
+                            key={skill.name}
+                            className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/80 dark:bg-neutral-900/40 hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:border-black dark:hover:border-neutral-600 transition-all duration-200 flex items-start gap-2.5 group/item cursor-default"
+                          >
+                            <div className="p-1.5 rounded-md bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 shrink-0 mt-0.5 group-hover/item:border-black dark:group-hover/item:border-white transition-colors">
+                              <SkillIcon className="w-3.5 h-3.5 text-black dark:text-white" />
+                            </div>
+                            <div className="min-w-0">
+                              <h4 className="text-xs font-mono font-semibold text-black dark:text-white truncate">
+                                {skill.name}
+                              </h4>
+                              <p className="text-[10px] font-mono text-neutral-500 dark:text-neutral-400 truncate">
+                                {skill.tag}
+                              </p>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
             );
           })}
         </div>
+
+        {/* ===== SECURITY & SYSTEMS TOOLING STRIP ===== */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-12 p-5 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/70 backdrop-blur-sm shadow-sm"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono">
+            <div className="flex items-center gap-2">
+              <Terminal className="w-4 h-4 text-black dark:text-white" />
+              <span className="text-xs text-neutral-500 uppercase tracking-wider font-semibold">
+                Kernel & Security Tooling:
+              </span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {securityProtocols.map((tool) => (
+                <span
+                  key={tool}
+                  className="px-2.5 py-1 rounded-md text-xs font-mono bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-colors"
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </motion.section>
   );
 }
-
