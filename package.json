@@ -2,7 +2,6 @@
   "name": "portfolio",
   "version": "0.1.0",
   "homepage": "https://vrma8.github.io",
-
   "private": true,
   "type": "module",
   "dependencies": {
@@ -58,6 +57,7 @@
     "@vitejs/plugin-react": "^6.0.5",
     "gh-pages": "^6.3.0",
     "tailwindcss": "4.3.3",
+    "typescript": "^7.0.2",
     "vite": "8.2.0"
   },
   "scripts": {
