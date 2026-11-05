@@ -407,3 +407,4 @@ export function TerminalModal({ isOpen, onClose }: TerminalModalProps) {
     </AnimatePresence>
   );
 }
+

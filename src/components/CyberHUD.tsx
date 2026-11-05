@@ -58,3 +58,4 @@ export function CyberHUD({ onOpenTerminal }: CyberHUDProps) {
     </div>
   );
 }
+
