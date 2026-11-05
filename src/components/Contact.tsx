@@ -23,6 +23,7 @@ import { Textarea } from './ui/textarea';
 import { Label } from './ui/label';
 import { motion } from 'motion/react';
 import { BinaryRain } from './BinaryRain';
+import { soundFX } from '../utils/audio';
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -34,6 +35,7 @@ export function Contact() {
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(emailAddress);
     setCopiedEmail(true);
+    soundFX.playSuccess();
     toast.success('Email copied to clipboard!', {
       className: 'font-mono text-xs',
     });
@@ -64,6 +66,7 @@ export function Contact() {
 
       if (result.success) {
         setIsSubmitted(true);
+        soundFX.playSuccess();
         toast.success('Secure transmission complete. I will get back to you soon!', {
           className: 'font-mono text-xs',
         });
@@ -77,6 +80,7 @@ export function Contact() {
       }
     } catch (error) {
       console.error('Submission error:', error);
+      soundFX.playError();
       toast.error('Transmission failed. Direct email available on the left.', {
         className: 'font-mono text-xs',
       });

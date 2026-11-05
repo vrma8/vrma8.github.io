@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Award, ExternalLink, Calendar, Shield, ShieldCheck, Globe, Terminal, Network, Skull, Code2, CheckCircle2, Sparkles } from 'lucide-react';
+import { Award, ExternalLink, Calendar, Shield, ShieldCheck, Globe, Terminal, Network, Skull, Code2, CheckCircle2 } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { motion } from 'motion/react';
 import { BinaryRain } from './BinaryRain';
+import { soundFX } from '../utils/audio';
 
 interface Certification {
   id: number;
@@ -101,6 +102,11 @@ export function Certifications() {
     ? certifications 
     : certifications.filter((c) => c.category === activeFilter);
 
+  const handleTabClick = (filterId: 'all' | 'security' | 'programming' | 'networking') => {
+    soundFX.playKeypress();
+    setActiveFilter(filterId);
+  };
+
   return (
     <motion.section 
       id="certifications" 
@@ -149,7 +155,7 @@ export function Certifications() {
             ].map((tab) => (
               <button
                 key={tab.id}
-                onClick={() => setActiveFilter(tab.id as typeof activeFilter)}
+                onClick={() => handleTabClick(tab.id as typeof activeFilter)}
                 className={`px-3.5 py-1.5 rounded-full transition-all border cursor-pointer ${
                   activeFilter === tab.id
                     ? 'bg-black text-white dark:bg-white dark:text-black border-black dark:border-white shadow-sm'
@@ -245,6 +251,7 @@ export function Certifications() {
                     <Button 
                       variant="outline" 
                       size="sm" 
+                      onClick={() => soundFX.playBeep()}
                       className="w-full gap-2 border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900/60 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:text-black dark:hover:text-white hover:border-black dark:hover:border-neutral-400 transition-all font-mono group/btn cursor-pointer" 
                       asChild
                     >

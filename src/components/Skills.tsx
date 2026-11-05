@@ -24,6 +24,7 @@ import {
   Braces
 } from 'lucide-react';
 import { BinaryRain } from './BinaryRain';
+import { soundFX } from '../utils/audio';
 
 interface SkillItem {
   name: string;
@@ -211,9 +212,13 @@ export function Skills() {
                       {cat.skills.map((skill) => {
                         const SkillIcon = skill.icon;
                         return (
-                          <div
+                          <motion.div
                             key={skill.name}
-                            className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/80 dark:bg-neutral-900/40 hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:border-black dark:hover:border-neutral-600 transition-all duration-200 flex items-start gap-2.5 group/item cursor-default"
+                            whileHover={{ scale: 1.03 }}
+                            whileTap={{ scale: 0.97 }}
+                            onMouseEnter={() => soundFX.playKeypress()}
+                            onClick={() => soundFX.playBeep()}
+                            className="p-2.5 rounded-lg border border-neutral-200 dark:border-neutral-800/80 bg-neutral-50/80 dark:bg-neutral-900/40 hover:bg-neutral-100 dark:hover:bg-neutral-900 hover:border-black dark:hover:border-neutral-500 transition-all duration-200 flex items-start gap-2.5 group/item cursor-pointer select-none"
                           >
                             <div className="p-1.5 rounded-md bg-white dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700/80 shrink-0 mt-0.5 group-hover/item:border-black dark:group-hover/item:border-white transition-colors">
                               <SkillIcon className="w-3.5 h-3.5 text-black dark:text-white" />
@@ -226,7 +231,7 @@ export function Skills() {
                                 {skill.tag}
                               </p>
                             </div>
-                          </div>
+                          </motion.div>
                         );
                       })}
                     </div>
@@ -254,12 +259,16 @@ export function Skills() {
             </div>
             <div className="flex flex-wrap gap-2">
               {securityProtocols.map((tool) => (
-                <span
+                <motion.span
                   key={tool}
-                  className="px-2.5 py-1 rounded-md text-xs font-mono bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-colors"
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
+                  onMouseEnter={() => soundFX.playKeypress()}
+                  onClick={() => soundFX.playBeep()}
+                  className="px-2.5 py-1 rounded-md text-xs font-mono bg-neutral-100 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-700 dark:text-neutral-300 hover:border-black dark:hover:border-white transition-colors cursor-pointer select-none"
                 >
                   {tool}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>
