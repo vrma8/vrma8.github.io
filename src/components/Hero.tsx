@@ -4,7 +4,6 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion } from "motion/react";
 import profileIMG from "../assets/ravi.jpg";
 import { BinaryRain } from "./BinaryRain";
-import { soundFX } from "../utils/audio";
 
 interface HeroProps {
   onOpenTerminal?: () => void;
@@ -19,7 +18,6 @@ function InteractiveCyberText({ text }: { text: string }) {
   const triggerScramble = useCallback(() => {
     if (isScrambling) return;
     setIsScrambling(true);
-    soundFX.playKeypress();
 
     let iteration = 0;
     const interval = setInterval(() => {
@@ -110,7 +108,6 @@ export function Hero({ onOpenTerminal }: HeroProps) {
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    soundFX.playBeep();
   };
 
   const handleMouseLeave = () => {
