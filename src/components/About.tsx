@@ -13,13 +13,13 @@ export function About() {
     },
     {
       title: "Senior Secondary Education (Class XII)",
-      institution: "CBSE Board",
+      institution: "HPBOSE",
       period: "2023",
       detail: "Physics, Chemistry, and Mathematics with Computer Science."
     },
     {
       title: "Matriculation (Class X)",
-      institution: "CBSE Board",
+      institution: "HPBOSE",
       period: "2021",
       detail: "Foundation in science, mathematics, and computing."
     }
@@ -28,12 +28,12 @@ export function About() {
   const experienceItems = [
     {
       role: "Domain Lead",
-      organization: "SHIELD NITH (Cybersecurity Society NITH)",
+      organization: "SHIELD NITH (Cybersecurity Society, NITH)",
       description: "Leading technical workshops and hands-on sessions on web security and pentesting."
     },
     {
       role: "Executive Member",
-      organization: "Robotics Society NITH",
+      organization: "Robotics Society, NITH",
       description: "Contributing to hardware-software integration, system design, and technical events."
     },
     {
