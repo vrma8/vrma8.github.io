@@ -11,7 +11,7 @@ interface Certification {
   id: number;
   title: string;
   issuer: string;
-  category: 'security' | 'programming' | 'networking';
+  category: 'Security' | 'Programming' | 'Networking';
   date: string;
   credentialId: string;
   description: string;
@@ -25,7 +25,7 @@ const certifications: Certification[] = [
     id: 1,
     title: 'Web Application Pentesting',
     issuer: 'TryHackMe',
-    category: 'security',
+    category: 'Security',
     date: 'July 2025',
     credentialId: 'THM-NNRBNHXKF4',
     description: 'Practical offensive security assessments: OWASP Top 10, SQLi, XSS, auth bypass, session management, and input sanitization.',
@@ -37,7 +37,7 @@ const certifications: Certification[] = [
     id: 2,
     title: 'Junior Penetration Tester',
     issuer: 'TryHackMe',
-    category: 'security',
+    category: 'Security',
     date: 'July 2025',
     credentialId: 'THM-BJY6ID9OX9',
     description: 'Foundations of penetration testing methodology, vulnerability assessment, privilege escalation, Metasploit, and network auditing.',
@@ -49,7 +49,7 @@ const certifications: Certification[] = [
     id: 3,
     title: 'Ethical Hacker',
     issuer: 'Cisco Networking Academy',
-    category: 'security',
+    category: 'Security',
     date: 'July 2025',
     credentialId: 'fe88ad41-efd2-4798-afaa-0ff6ddfc7e8e',
     description: 'Hands-on ethical hacking skills, threat mitigation, reconnaissance, network defense strategies, and vulnerability management.',
@@ -61,7 +61,7 @@ const certifications: Certification[] = [
     id: 4,
     title: 'Networking Basics',
     issuer: 'Cisco Networking Academy',
-    category: 'networking',
+    category: 'Networking',
     date: 'July 2025',
     credentialId: '58163a8c-1cc4-4f3c-a513-2c797921915b',
     description: 'Core internet protocols, packet routing, TCP/IP architecture, subnetting, switching, and foundational network defense.',
@@ -73,7 +73,7 @@ const certifications: Certification[] = [
     id: 5,
     title: 'Python Essentials 2',
     issuer: 'Cisco / OpenEDG Python Institute',
-    category: 'programming',
+    category: 'Programming',
     date: 'July 2025',
     credentialId: '3e4436b2-0e80-4953-a2a4-b7709401e4eb',
     description: 'Advanced Python programming: Object-Oriented Programming (OOP), modules, packages, exceptions, and file processing.',
@@ -85,7 +85,7 @@ const certifications: Certification[] = [
     id: 6,
     title: 'JavaScript Essentials 2',
     issuer: 'Cisco / OpenEDG JS Institute',
-    category: 'programming',
+    category: 'Programming',
     date: 'July 2025',
     credentialId: '7f70d2b6-a11f-4ef6-a05d-85582dde8238',
     description: 'Modern JavaScript fundamentals: prototype chains, asynchronous operations, event handling, OOP, and data structures.',
@@ -96,7 +96,7 @@ const certifications: Certification[] = [
 ];
 
 export function Certifications() {
-  const [activeFilter, setActiveFilter] = useState<'all' | 'security' | 'programming' | 'networking'>('all');
+  const [activeFilter, setActiveFilter] = useState<'all' | 'Security' | 'Programming' | 'Networking'>('all');
 
   const filteredCerts = activeFilter === 'all' 
     ? certifications 
