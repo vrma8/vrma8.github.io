@@ -206,7 +206,7 @@ export function Hero({ onOpenTerminal }: HeroProps) {
           >
             <div className="flex items-center gap-2.5 text-base sm:text-lg text-neutral-800 dark:text-neutral-200 font-medium">
               <Code2 className="w-5 h-5 text-neutral-500 dark:text-neutral-400 shrink-0" />
-              <span>B.Tech in Computer Science & Engineering</span>
+              <span>Bachelors of Technology in Computer Science & Engineering</span>
             </div>
 
             <div className="flex items-center gap-2.5 text-sm sm:text-base text-neutral-600 dark:text-neutral-400 flex-wrap">
